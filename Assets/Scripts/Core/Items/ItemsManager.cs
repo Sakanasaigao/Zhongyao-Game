@@ -78,7 +78,6 @@ namespace ITEMS
         private GameObject GetPrefabForItem(string itemName)
         {
             string prefabPath = FormatItemPath(itemPrefabPathFormat, itemName);
-
             return Resources.Load<GameObject>(prefabPath);
         }
 
@@ -87,7 +86,6 @@ namespace ITEMS
         private Item CreateItemFromInfo(ITEM_INFO info)
         {
             ItemConfigData config = info.config;
-
             return new Item(config.name, config, info.prefab);
         }
 

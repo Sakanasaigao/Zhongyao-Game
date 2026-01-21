@@ -1,15 +1,17 @@
 %YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
+%TAG !u! tag:yousandi.cn,2023:
 --- !u!29 &1
 OcclusionCullingSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_OcclusionBakeSettings:
-    smallestOccluder: 5
-    smallestHole: 0.25
-    backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
+  serializedVersion: 3
   m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionEnabled: 0
+  m_DisplayOccluded: 0
+  m_SceneDepthBufferWidth: 512
+  m_SceneDepthBufferHeight: 512
+  m_ShadowDepthBufferWidth: 512
+  m_ShadowDepthBufferHeight: 512
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -71,7 +73,7 @@ LightmapSettings:
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
-    m_BakeBackend: 1
+    m_BakeBackend: 2
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 512
@@ -128,10 +130,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 72798542}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,10 +164,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 107428898}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,10 +198,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 235791736}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,6 +234,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1528200517}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u4EBA\u53C2"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u4EBA\u53C2"
@@ -277,6 +290,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u4EBA\u53C2"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -295,6 +312,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1899443013}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u963F\u80F6"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u963F\u80F6"
@@ -343,6 +368,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u963F\u80F6"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -361,6 +390,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1764481291}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u8700\u6912"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u8700\u6912"
@@ -409,6 +446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u8700\u6912"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -425,10 +466,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 358001019}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,10 +500,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 360380497}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: "\u79CB-\u5C71\u5761\uFF08\u7B2C\u56DB\u7AE0\uFF09"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +533,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 418163577}
   - component: {fileID: 418163576}
@@ -498,6 +541,7 @@ GameObject:
   - component: {fileID: 418163578}
   - component: {fileID: 418163579}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -558,6 +602,8 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_enableGDRP: 1
+  m_backfaceCulling: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -572,7 +618,7 @@ Transform:
   m_GameObject: {fileID: 418163574}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6.9}
+  m_LocalPosition: {x: 0, y: 0.46, z: 6.8999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -612,6 +658,11 @@ MonoBehaviour:
   m_UseScreenCoordOverride: 0
   m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  allowDeepLearningSuperSampling: 0
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -644,11 +695,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 495723818}
   - component: {fileID: 495723819}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,6 +739,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_ShadingRate: 0
+  m_ForceDisableGRD: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -730,6 +785,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 657382386}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u6842\u679D"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u6842\u679D"
@@ -778,6 +841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u6842\u679D"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -794,11 +861,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 561692215}
   - component: {fileID: 561692216}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,6 +905,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_ShadingRate: 0
+  m_ForceDisableGRD: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -878,10 +949,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 567178085}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -915,6 +987,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 657382386}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u5927\u67A3"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u5927\u67A3"
@@ -963,6 +1043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u5927\u67A3"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -979,10 +1063,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 657382386}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,10 +1100,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 658034213}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: "\u590F-\u5C71\u9876\uFF08\u7B2C\u4E8C\u7AE0\uFF09"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1047,11 +1133,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 677798596}
   - component: {fileID: 677798597}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,6 +1177,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_ShadingRate: 0
+  m_ForceDisableGRD: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1133,6 +1223,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 657382386}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u7518\u8349"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u7518\u8349"
@@ -1181,6 +1279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u7518\u8349"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1197,11 +1299,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 776162153}
   - component: {fileID: 776162154}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1240,6 +1343,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_ShadingRate: 0
+  m_ForceDisableGRD: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1281,11 +1387,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 833896789}
   - component: {fileID: 833896790}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1324,6 +1431,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_ShadingRate: 0
+  m_ForceDisableGRD: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1365,13 +1475,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 861303745}
   - component: {fileID: 861303748}
   - component: {fileID: 861303747}
   - component: {fileID: 861303746}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Return
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1500,6 +1611,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1528200517}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u9EC4\u82A9"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u9EC4\u82A9"
@@ -1548,6 +1667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u9EC4\u82A9"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1564,11 +1687,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1149093966}
   - component: {fileID: 1149093967}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1607,6 +1731,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_ShadingRate: 0
+  m_ForceDisableGRD: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1650,6 +1777,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 567178085}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u4E4C\u6885"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u4E4C\u6885"
@@ -1698,6 +1833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u4E4C\u6885"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1714,12 +1853,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1175804849}
   - component: {fileID: 1175804851}
   - component: {fileID: 1175804850}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1784,6 +1924,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1899443013}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u9E21\u5B50\u9EC4"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u9E21\u5B50\u9EC4"
@@ -1832,6 +1980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u9E21\u5B50\u9EC4"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1848,10 +2000,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1291269279}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: "\u79CB-\u5C71\u9876"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1882,6 +2035,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1528200517}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u534A\u590F"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u534A\u590F"
@@ -1930,6 +2091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u534A\u590F"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1946,10 +2111,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1307410606}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1977,11 +2143,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1355779739}
   - component: {fileID: 1355779738}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: SceneEvents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2026,6 +2193,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1528200517}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u67F4\u80E1"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u67F4\u80E1"
@@ -2074,6 +2249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u67F4\u80E1"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2092,6 +2271,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1764481291}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u9EC4\u67CF"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u9EC4\u67CF"
@@ -2140,6 +2327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u9EC4\u67CF"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2158,6 +2349,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 567178085}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u7EC6\u8F9B"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u7EC6\u8F9B"
@@ -2206,6 +2405,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u7EC6\u8F9B"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2222,10 +2425,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1528200517}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2257,10 +2461,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1545204472}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2292,6 +2497,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1899443013}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u9EC4\u8FDE"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u9EC4\u8FDE"
@@ -2340,6 +2553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u9EC4\u8FDE"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2356,10 +2573,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1623443113}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2389,7 +2607,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1678792898}
   - component: {fileID: 1678792897}
@@ -2397,6 +2615,7 @@ GameObject:
   - component: {fileID: 1678792895}
   - component: {fileID: 1678792894}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2506,6 +2725,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 567178085}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u9644\u5B50"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u9644\u5B50"
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.9
@@ -2550,6 +2781,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u9644\u5B50"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2566,10 +2801,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1764481291}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2601,6 +2837,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 567178085}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u5F53\u5F52"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u5F53\u5F52"
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.51
@@ -2645,6 +2893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u5F53\u5F52"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2661,10 +2913,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1832791366}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2763,10 +3016,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1899443013}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2799,6 +3053,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 657382386}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u751F\u59DC"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u751F\u59DC"
@@ -2847,6 +3109,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u751F\u59DC"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2863,10 +3129,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1924422784}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Scenes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2897,6 +3164,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 657382386}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730379336800882829, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: medicineName
+      value: "\u767D\u828D"
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u767D\u828D"
@@ -2945,6 +3220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u767D\u828D"
       objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2961,12 +3240,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 2016298826}
   - component: {fileID: 2016298828}
   - component: {fileID: 2016298827}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3040,11 +3320,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 2052024533}
   - component: {fileID: 2052024534}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: _test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3085,10 +3366,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 2053022186}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: "\u590F-\u5C71\u5761\uFF08\u7B2C\u4E00\u7AE0\uFF09"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3117,10 +3399,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 2091163000}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: "\u79CB-\u5C71\u8C37\uFF08\u7B2C\u56DB\u7AE0\uFF09"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3149,10 +3432,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 2126817132}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: "\u590F-\u5C71\u8C37\uFF08\u7B2C\u4E09\u7AE0\uFF09"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3183,6 +3467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1523391093523580721, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u9EC4\u8FDE"
@@ -3234,6 +3522,10 @@ PrefabInstance:
     - target: {fileID: 8513972829654569668, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_Name
       value: Explore Pot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905745943738984834, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -42,11 +42,11 @@ public class TextArchitect
 
     public Coroutine Build(string text)
     {
-        // ´¦Àí¿ÕÎÄ±¾£ºÁ¢¼´Íê³É
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (string.IsNullOrEmpty(text))
         {
             tmpro.text = "";
-            OnComplete(); // È·±£×´Ì¬ÇåÀí
+            OnComplete(); // È·ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
             return null;
         }
 
@@ -65,7 +65,7 @@ public class TextArchitect
             return null;
         }
 
-        // ´¦Àí¿ÕÎÄ±¾£ºÁ¢¼´Íê³É
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (string.IsNullOrEmpty(text))
         {
             tmpro.text = preText;
@@ -109,7 +109,7 @@ public class TextArchitect
         }
         finally
         {
-            // ÎÞÂÛÐ­³ÌÈçºÎ½áÊø£¬È·±£×´Ì¬ÖØÖÃ
+            // ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
             OnComplete();
         }
     }
@@ -139,7 +139,7 @@ public class TextArchitect
                 tmpro.ForceMeshUpdate();
                 break;
         }
-        OnComplete(); // È·±£×´Ì¬Á¢¼´¸üÐÂ
+        OnComplete(); // È·ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     private void Prepare()

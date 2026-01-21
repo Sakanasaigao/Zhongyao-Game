@@ -1,3 +1,16 @@
+/*
+ * 中药游戏项目 - TaskManager.cs
+ * 
+ * 项目概述：
+ * 这是一个基于Unity开发的中药主题游戏，融合了视觉小说(GAL)元素，
+ * 具有完整的游戏机制和数据管理系统，包含任务、物品、对话等完整的RPG游戏要素。
+ * 
+ * 模块功能：
+ * - 任务系统的核心管理器，采用单例模式
+ * - 负责任务的添加、管理和完成状态检查
+ * - 支持通过名称添加任务和获取活跃任务列表
+ * - 提供任务进度检查和完成验证功能
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -112,11 +125,11 @@ public class TaskManager : MonoBehaviour
 
     public void SaveTasks()
     {
-        // �浵
+        // �浵
     }
 
     public void LoadTasks()
     {
-        // ����
+        // ����
     }
 }

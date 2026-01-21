@@ -17,6 +17,8 @@ public class VideoManager : MonoBehaviour
     private bool isFading = false;
     private float fadeTimer = 0f;
     private bool autoCloseOnComplete = false;
+    private float pKeyHoldTime = 0f; // 按住P键的时间
+    private const float P_KEY_HOLD_DURATION = 3f; // 按住P键跳过CG的持续时间
 
     void Awake()
     {
@@ -89,6 +91,33 @@ public class VideoManager : MonoBehaviour
     void Update()
     {
         HandleFade();
+        HandlePKeySkip();
+    }
+
+    private void HandlePKeySkip()
+    {
+        // 检查视频是否正在播放
+        if (!videoPlayer.isPlaying) return;
+
+        // 检查P键是否被按住
+        if (Input.GetKey(KeyCode.P))
+        {
+            // 累加按住时间
+            pKeyHoldTime += Time.deltaTime;
+            
+            // 当按住时间达到3秒时，停止视频
+            if (pKeyHoldTime >= P_KEY_HOLD_DURATION)
+            {
+                Debug.Log("P键按住3秒，跳过CG");
+                StopVideo();
+                pKeyHoldTime = 0f; // 重置时间
+            }
+        }
+        else
+        {
+            // 松开P键时，重置时间
+            pKeyHoldTime = 0f;
+        }
     }
 
     private void HandleFade()

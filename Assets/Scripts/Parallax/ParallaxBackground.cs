@@ -1,44 +1,69 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class ParallaxBackground : MonoBehaviour
 {
     public ParallaxCamera parallaxCamera;
-    List<ParallaxLayer> parallaxLayers = new List<ParallaxLayer>();
+    public Vector2 parallaxEffectMultiplier;
+    public bool infiniteHorizontal;
+    public bool infiniteVertical;
+
+    private Transform cameraTransform;
+    private Vector3 lastCameraPosition;
+    private float spriteWidth, spriteHeight;
+    private float textureUnitSizeX, textureUnitSizeY;
+    private ParallaxLayer[] layers;
 
     void Start()
     {
-        if (parallaxCamera == null)
+        // 初始化layers数组
+        layers = GetComponentsInChildren<ParallaxLayer>();
+        
+        // 设置相机引用
+        if (parallaxCamera == null && Camera.main != null)
+        {
             parallaxCamera = Camera.main.GetComponent<ParallaxCamera>();
-
+        }
+        
         if (parallaxCamera != null)
+        {
             parallaxCamera.onCameraTranslate += Move;
-
-        SetLayers();
+        }
+        
+        // 确保parallaxEffectMultiplier有效
+        FixVector2(ref parallaxEffectMultiplier);
     }
 
-    void SetLayers()
+    public void Move(float delta)
     {
-        parallaxLayers.Clear();
-
-        for (int i = 0; i < transform.childCount; i++)
+        // 检查delta是否有效
+        if (float.IsNaN(delta) || float.IsInfinity(delta))
         {
-            ParallaxLayer layer = transform.GetChild(i).GetComponent<ParallaxLayer>();
-
-            if (layer != null)
+            Debug.LogWarning($"无效delta值检测到，移动被忽略");
+            return;
+        }
+        
+        // 确保layers数组有效
+        if (layers != null)
+        {
+            foreach (ParallaxLayer layer in layers)
             {
-                layer.name = "Layer-" + i;
-                parallaxLayers.Add(layer);
+                if (layer != null)
+                {
+                    layer.Move(delta);
+                }
             }
         }
     }
-
-    void Move(float delta)
+    
+    /// <summary>
+    /// 修复Vector2，确保所有分量都是有效的
+    /// </summary>
+    /// <param name="vector">要修复的Vector2</param>
+    private void FixVector2(ref Vector2 vector)
     {
-        foreach (ParallaxLayer layer in parallaxLayers)
-        {
-            layer.Move(delta);
-        }
+        if (float.IsNaN(vector.x) || float.IsInfinity(vector.x))
+            vector.x = 1;
+        if (float.IsNaN(vector.y) || float.IsInfinity(vector.y))
+            vector.y = 1;
     }
 }

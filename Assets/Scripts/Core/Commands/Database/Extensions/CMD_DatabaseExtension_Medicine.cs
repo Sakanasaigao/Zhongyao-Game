@@ -31,7 +31,7 @@ namespace MEDICINE
 
             if (!parameters.TryGetValue(PARAM_TARGETS, out string targetsStr, ""))
             {
-                Debug.LogError("CreateMedicinePot ĞèÒª -targets ²ÎÊı");
+                Debug.LogError("CreateMedicinePot ï¿½ï¿½Òª -targets ï¿½ï¿½ï¿½ï¿½");
                 return;
             }
 
@@ -39,7 +39,7 @@ namespace MEDICINE
 
             if (!parameters.TryGetValue(PARAM_COUNT, out int totalCount, 0))
             {
-                Debug.LogError("CreateMedicinePot ĞèÒª -count ²ÎÊı");
+                Debug.LogError("CreateMedicinePot ï¿½ï¿½Òª -count ï¿½ï¿½ï¿½ï¿½");
                 return;
             }
 
@@ -62,14 +62,15 @@ namespace MEDICINE
 
             if (!parameters.TryGetValue(PARAM_FILE, out string file))
             {
-                Debug.Log("´´½¨Ò©¹ŞĞèÒªÉèÖÃ»Øµ÷½Å±¾ -f");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½Ò©ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã»Øµï¿½ï¿½Å±ï¿½ -f");
                 return;
             }
 
-            string[] randomOtherMedicine = ItemWarehouse.Instance.GetRandomItemsExcluding(totalCount, targetMeds);
-            Debug.Log(randomOtherMedicine.Length);
+            // åªä½¿ç”¨ç›®æ ‡è¯å“ï¼Œä¸æ·»åŠ éšæœºè¯å“
+            string[] levelSpecificMedicines = targetMeds;
+            Debug.Log(levelSpecificMedicines.Length);
 
-            var(targetIndex, allMedicineToPut) = MergeAndShuffle(targetMeds, randomOtherMedicine);
+            var(targetIndex, allMedicineToPut) = MergeAndShuffle(targetMeds, new string[0]);
 
             if (MedicinePotManager.Instance != null)
             {
@@ -80,7 +81,7 @@ namespace MEDICINE
             }
             else
             {
-                Debug.LogError("MedicinePotManager ÊµÀıÎ´´´½¨");
+                Debug.LogError("MedicinePotManager Êµï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½");
             }
         }
 
@@ -114,7 +115,7 @@ namespace MEDICINE
 
             if (!parameters.TryGetValue(PARAM_ITEMS, out string itemsStr, ""))
             {
-                Debug.LogError("AddMedicineToWarehouse ÃüÁîĞèÒª -items ²ÎÊı");
+                Debug.LogError("AddMedicineToWarehouse ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª -items ï¿½ï¿½ï¿½ï¿½");
                 return;
             }
 
@@ -122,7 +123,7 @@ namespace MEDICINE
 
             if (ItemWarehouse.Instance == null)
             {
-                Debug.LogError("ItemWarehouse ÊµÀıÎ´ÕÒµ½");
+                Debug.LogError("ItemWarehouse Êµï¿½ï¿½Î´ï¿½Òµï¿½");
                 return;
             }
 
@@ -133,7 +134,7 @@ namespace MEDICINE
                 {
                     bool success = ItemWarehouse.Instance.AddItem(trimmedItem);
                     if (!success)
-                        Debug.LogWarning($"Ò©Æ· '{trimmedItem}' ÒÑ´æÔÚ£¬Ìí¼ÓÊ§°Ü");
+                        Debug.LogWarning($"Ò©Æ· '{trimmedItem}' ï¿½Ñ´ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
                 }
             }
         }
@@ -144,7 +145,7 @@ namespace MEDICINE
 
             if (!parameters.TryGetValue(PARAM_COUNT, out int count, 0))
             {
-                Debug.LogError("PutMedicineOnCounter ÃüÁîĞèÒª -count ²ÎÊı");
+                Debug.LogError("PutMedicineOnCounter ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª -count ï¿½ï¿½ï¿½ï¿½");
                 return;
             }
 
@@ -162,7 +163,7 @@ namespace MEDICINE
             if (CounterManager.instance != null)
                 CounterManager.instance.PlaceAllMedicine(count, necessaryMeds);
             else
-                Debug.LogError("CounterManager ÊµÀıÎ´ÕÒµ½");
+                Debug.LogError("CounterManager Êµï¿½ï¿½Î´ï¿½Òµï¿½");
         }
     }
 }

@@ -84,5 +84,93 @@ namespace DIALOGUE
         {
             return conversationManager.StartConversation(conversation);
         }
+
+        // 空格键长按相关变量
+        private float spaceKeyPressTime = 0f;
+        private bool isLongPressActivated = false;
+        private bool isAutoForwarding = false;
+        private const float longPressThreshold = 2f; // 长按阈值（秒）
+        
+        // 开发后门相关变量
+        private string inputBuffer = ""; // 输入缓冲区
+        private const string CHEAT_CODE = "==="; // 作弊码
+
+        private void Update()
+        {
+            // 检测空格键输入
+            if (Input.GetKey(KeyCode.Space))
+            {
+                // 空格键被按住，增加计时
+                spaceKeyPressTime += Time.deltaTime;
+                
+                // 如果正在显示对话文本
+                if (architect != null && architect.isBuilding)
+                {
+                    // 设置hurryUp为true，使文本快进显示
+                    architect.hurryUp = true;
+                }
+                else
+                {
+                    // 如果文本已经显示完成
+                    if (!isLongPressActivated)
+                    {
+                        // 短按触发下一段对话
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            OnUserPrompt_Next();
+                        }
+                    }
+                }
+                
+                // 检测是否达到长按阈值
+                if (spaceKeyPressTime >= longPressThreshold && !isLongPressActivated)
+                {
+                    isLongPressActivated = true;
+                    isAutoForwarding = true;
+                }
+            }
+            else
+            {
+                // 空格键松开，重置计时和状态
+                spaceKeyPressTime = 0f;
+                isLongPressActivated = false;
+                isAutoForwarding = false;
+            }
+            
+            // 自动快进逻辑
+            if (isAutoForwarding && architect != null && !architect.isBuilding)
+            {
+                // 如果当前没有正在显示的文本，自动触发下一段对话
+                OnUserPrompt_Next();
+            }
+            
+            // 开发后门：检测连续输入 ===
+            if (Input.anyKeyDown)
+            {
+                // 获取按下的键
+                string key = Input.inputString;
+                if (!string.IsNullOrEmpty(key))
+                {
+                    // 添加到输入缓冲区
+                    inputBuffer += key;
+                    
+                    // 只保留最后3个字符
+                    if (inputBuffer.Length > 3)
+                    {
+                        inputBuffer = inputBuffer.Substring(inputBuffer.Length - 3);
+                    }
+                    
+                    // 检测作弊码
+                    if (inputBuffer == CHEAT_CODE)
+                    {
+                        Debug.Log("Cheat code detected! Jumping to Chapter 4...");
+                        // 跳转到第四章
+                        CommandManager.instance.Execute("startdialogue", "-f", "41");
+                        // 清空输入缓冲区
+                        inputBuffer = "";
+                    }
+                }
+            }
+        }
     }
 }

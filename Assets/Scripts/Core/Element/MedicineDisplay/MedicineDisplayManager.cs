@@ -21,27 +21,25 @@ public class MedicineDisplayManager : MonoBehaviour
 
     public void InitializeMedicineDisplay(string medicineName)
     {
-        if (string.IsNullOrEmpty(medicineName) || MedicineDisplayPrefab == null)
-        {
-            Debug.LogError("Invalid medicine name or missing prefab reference");
-            return;
-        }
-
         var medicineInfo = ItemsManager.instance.GetItemInfo(medicineName);
-        if (medicineInfo == null || medicineInfo.config == null)
-        {
-            Debug.LogError($"Failed to get medicine info for: {medicineName}");
-            return;
-        }
 
         string name = medicineInfo.config.name;
         string description = medicineInfo.config.characteristic;
         Sprite image = null;
 
+        // 添加日志调试
+        Debug.Log($"Loading medicine: {medicineName}");
+        Debug.Log($"Image path: {ItemsManager.instance.GetItemImagePath(medicineName)}");
+        
         Sprite[] images = Resources.LoadAll<Sprite>(ItemsManager.instance.GetItemImagePath(medicineName));
         if (images != null && images.Length > 0)
         {
-            image = Array.Find(images, img => img.name == medicineName);
+            image = images[0];
+            Debug.Log($"Found image: {image.name}");
+        }
+        else
+        {
+            Debug.LogError($"No images found for {medicineName} at path {ItemsManager.instance.GetItemImagePath(medicineName)}");
         }
 
         GameObject newMedicineDisplay = Instantiate(MedicineDisplayPrefab, spawnParent);
@@ -58,5 +56,4 @@ public class MedicineDisplayManager : MonoBehaviour
             Destroy(newMedicineDisplay);
         }
     }
-
 }

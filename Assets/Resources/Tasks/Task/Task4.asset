@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e14f9c7464d8a49ae742baafe853ec, type: 3}
   m_Name: Task4
   m_EditorClassIdentifier: 
-  taskID: "\u4E4C\u6885\u4E38"
-  taskName: "\u4E4C\u6885\u4E38"
-  description: 
+  taskID: "第四章药品"
+  taskName: "第四章药品"
+  description: "第四章收集药品"
   conditions:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e90845d13f2f09a468c32b38a0430567, type: 2}
   taskDependency: []
   onCompleteCommandNames: StartDialogue(-f 42)

@@ -7,11 +7,11 @@ using UnityEngine.EventSystems;
 
 public class ExplorePot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [Header("Ëõ·ÅÉèÖÃ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private float hoverScaleMultiplier = 1.1f;
     [SerializeField] private float animationDuration = 0.2f;
 
-    [Header("µã»÷»ñÈ¡µÄÎïÆ·")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Æ·")]
     public string medicineName;
 
     private Vector3 originalScale;

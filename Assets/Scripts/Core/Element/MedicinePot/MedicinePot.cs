@@ -17,6 +17,8 @@ public class MedicinePot : MonoBehaviour
     private bool isSelecting = true;
     private Transform medicinesParent;
     private Dictionary<string, Transform> medicineNodes = new Dictionary<string, Transform>();
+    // æ·»åŠ èŠ‚ç‚¹åç§°åˆ°è¯å“åç§°çš„æ˜ å°„
+    private Dictionary<string, string> nodeToMedicineName = new Dictionary<string, string>();
 
     private void Start()
     {
@@ -54,7 +56,7 @@ public class MedicinePot : MonoBehaviour
         }
         else
         {
-            Debug.LogError("ÕÒ²»µ½Medicines¸¸½Úµã");
+            Debug.LogError("ï¿½Ò²ï¿½ï¿½ï¿½Medicinesï¿½ï¿½ï¿½Úµï¿½");
         }
     }
 
@@ -62,7 +64,7 @@ public class MedicinePot : MonoBehaviour
     {
         if (!medicineNodes.TryGetValue(nodeName, out Transform node))
         {
-            Debug.LogWarning($"ÕÒ²»µ½Ò©Æ·½Úµã: {nodeName}");
+            Debug.LogWarning($"ï¿½Ò²ï¿½ï¿½ï¿½Ò©Æ·ï¿½Úµï¿½: {nodeName}");
             return;
         }
 
@@ -82,11 +84,13 @@ public class MedicinePot : MonoBehaviour
             instance.transform.localRotation = Quaternion.identity;
             instance.transform.localScale = Vector3.one;
 
+            // å»ºç«‹èŠ‚ç‚¹åç§°åˆ°è¯å“åç§°çš„æ˜ å°„
+            nodeToMedicineName[nodeName] = prefabName;
             AddClickHandler(instance.transform, nodeName);
         }
         else
         {
-            Debug.LogWarning($"ÎŞ·¨¼ÓÔØÒ©Æ· {prefabName} µÄÔ¤ÖÆÌå");
+            Debug.LogWarning($"ï¿½Ş·ï¿½ï¿½ï¿½ï¿½ï¿½Ò©Æ· {prefabName} ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½");
         }
     }
 
@@ -94,7 +98,7 @@ public class MedicinePot : MonoBehaviour
     {
         if (node == null)
         {
-            Debug.LogWarning($"ÎŞ·¨Îª {nodeName} Ìí¼Óµã»÷´¦ÀíÆ÷£¬½ÚµãÎª¿Õ");
+            Debug.LogWarning($"ï¿½Ş·ï¿½Îª {nodeName} ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Îªï¿½ï¿½");
             return;
         }
 
@@ -108,14 +112,21 @@ public class MedicinePot : MonoBehaviour
         {
             if (!isSelecting) return;
 
-            bool isTargetMedicine = targetMedicines.Contains(clickedNodeName);
+            // è·å–çœŸå®è¯å“åç§°
+            if (!nodeToMedicineName.TryGetValue(clickedNodeName, out string medicineName))
+            {
+                Debug.LogError($"No medicine name found for node: {clickedNodeName}");
+                return;
+            }
+
+            bool isTargetMedicine = targetMedicines.Contains(medicineName);
 
             if (isTargetMedicine)
             {
-                if (!clickedMedicines.Contains(clickedNodeName))
+                if (!clickedMedicines.Contains(medicineName))
                 {
-                    clickedMedicines.Add(clickedNodeName);
-                    Debug.Log($"{clickedNodeName} ÒÑ±»Ñ¡ÖĞ");
+                    clickedMedicines.Add(medicineName);
+                    Debug.Log($"{medicineName} å·²è¢«é€‰ä¸­");
 
                     if (clickedMedicines.Count == targetMedicines.Count)
                     {
@@ -125,7 +136,7 @@ public class MedicinePot : MonoBehaviour
             }
             else
             {
-                Debug.Log($"{clickedNodeName} ÊÇ²»±ØÒªµÄÒ©Æ·£¬ÖØÖÃÑ¡Ôñ");
+                Debug.Log($"{medicineName} ä¸æ˜¯éœ€è¦çš„è¯å“ï¼Œé‡æ–°é€‰æ‹©");
                 StartCoroutine(ResetSelection());
             }
         });
@@ -146,13 +157,13 @@ public class MedicinePot : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        Debug.Log("Ñ¡ÔñÒÑÖØÖÃ£¬ÇëÖØĞÂÑ¡Ôñ");
+        Debug.Log("Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½");
         isSelecting = true;
     }
 
     private void StartBrewing()
     {
-        Debug.Log("ËùÓĞ±ØÒªÒ©Æ·ÒÑÑ¡Ôñ£¬¿ªÊ¼¼åÒ©");
+        Debug.Log("ï¿½ï¿½ï¿½Ğ±ï¿½ÒªÒ©Æ·ï¿½ï¿½Ñ¡ï¿½ñ£¬¿ï¿½Ê¼ï¿½ï¿½Ò©");
         isSelecting = false;
         animator.Play("MedicinePot_PutMedIn");
 

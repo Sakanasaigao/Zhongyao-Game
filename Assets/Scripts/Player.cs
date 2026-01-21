@@ -1,19 +1,31 @@
+/*
+ * ä¸­è¯æ¸¸æˆé¡¹ç›® - Player.cs
+ * 
+ * é¡¹ç›®æ¦‚è¿°ï¼š
+ * è¿™æ˜¯ä¸€ä¸ªåŸºäºUnityå¼€å‘çš„ä¸­è¯ä¸»é¢˜æ¸¸æˆï¼Œèåˆäº†è§†è§‰å°è¯´(GAL)å…ƒç´ ï¼Œ
+ * å…·æœ‰å®Œæ•´çš„æ¸¸æˆæœºåˆ¶å’Œæ•°æ®ç®¡ç†ç³»ç»Ÿï¼ŒåŒ…å«ä»»åŠ¡ã€ç‰©å“ã€å¯¹è¯ç­‰å®Œæ•´çš„RPGæ¸¸æˆè¦ç´ ã€‚
+ * 
+ * æ¨¡å—åŠŸèƒ½ï¼š
+ * - ç©å®¶è§’è‰²ç±»ï¼Œç®¡ç†ç©å®¶çš„æ ¸å¿ƒçŠ¶æ€
+ * - å­˜å‚¨å½“å‰åœºæ™¯ã€æ‹¥æœ‰ç‰©å“ã€æ¸¸æˆè„šæœ¬è¿›åº¦ã€ä»»åŠ¡åˆ—è¡¨ç­‰ä¿¡æ¯
+ * - æä¾›ä¿å­˜å’ŒåŠ è½½ç©å®¶æ•°æ®çš„æ–¹æ³•
+ */
 using ITEMS;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public int scene; // Íæ¼ÒËù´¦µÄ³¡¾°Ë÷Òı
-    public string[] items; // Íæ¼ÒÓµÓĞµÄÎïÆ·£¨ÕûĞÍÊı×é£©
-    public int gameScriptIndex; // Íæ¼ÒËù´¦µÄ¾çÇé½ø¶È
-    public bool inGal; // Íæ¼ÒÊÇ·ñ´¦ÓÚgal×´Ì¬
-    public int timesPlayedGame; // Íæ¼Ò½øÈëÓÎÏ·´ÎÊı
+    public int scene; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public string[] items; // ï¿½ï¿½ï¿½Óµï¿½Ğµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£©
+    public int gameScriptIndex; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public bool inGal; // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½gal×´Ì¬
+    public int timesPlayedGame; // ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
     public string[] tasks;
 
     public PlayerData SavePlayerData()
     {
-        // ·µ»ØÍæ¼ÒµÄµ±Ç°×´Ì¬
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÄµï¿½Ç°×´Ì¬
         return new PlayerData
         {
             scene = SceneManager.GetActiveScene().buildIndex,
@@ -26,7 +38,7 @@ public class Player : MonoBehaviour
 
     public void LoadPlayerData(PlayerData data)
     {
-        // ¼ÓÔØÍæ¼ÒµÄ×´Ì¬
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½×´Ì¬
         scene = data.scene;
         items = data.items;
         gameScriptIndex = data.storyProgress;
@@ -38,9 +50,9 @@ public class Player : MonoBehaviour
 [System.Serializable]
 public class PlayerData
 {
-    public int scene; // Íæ¼ÒËù´¦µÄ³¡¾°Ë÷Òı
-    public string[] items; // Íæ¼ÒÓµÓĞµÄÎïÆ·
-    public int storyProgress; // Íæ¼ÒËù´¦µÄ¾çÇé½ø¶È
-    public bool inGal; // Íæ¼ÒÊÇ·ñ´¦ÓÚgal×´Ì¬
+    public int scene; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public string[] items; // ï¿½ï¿½ï¿½Óµï¿½Ğµï¿½ï¿½ï¿½Æ·
+    public int storyProgress; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public bool inGal; // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½gal×´Ì¬
     public string[] tasks;
 }
