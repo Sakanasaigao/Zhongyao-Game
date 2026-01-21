@@ -29,7 +29,7 @@ public class MedicinePotManager : MonoBehaviour
     {
         if (ykgrPrefab == null)
         {
-            Debug.LogError("Ò©¹ÞÔ¤ÖÆÌåÎ´·ÖÅä£¡");
+            Debug.LogError("Ò©ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ä£¡");
             return null;
         }
         Debug.Log(allMedicineNames.Length + "diergekdjfie");
@@ -51,7 +51,7 @@ public class MedicinePotManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("MedicinePot½Å±¾Î´¸½¼Óµ½Ô¤ÖÆÌå£¡");
+            Debug.LogError("MedicinePotï¿½Å±ï¿½Î´ï¿½ï¿½ï¿½Óµï¿½Ô¤ï¿½ï¿½ï¿½å£¡");
             Destroy(medicinePot);
             return null;
         }

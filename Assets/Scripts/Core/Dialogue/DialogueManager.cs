@@ -19,6 +19,8 @@ namespace DIALOGUE
     public class DialogueManager : MonoBehaviour
     {
         [SerializeField] private TextAsset fileToRead = null;
+        // 添加public属性，用于访问当前脚本文件
+        public TextAsset FileToRead => fileToRead;
         public static DialogueManager instance { get; private set; }
 
         private DialogueLoaderManager dialogueLoaderManager => DialogueLoaderManager.instance;

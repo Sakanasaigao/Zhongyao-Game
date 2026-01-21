@@ -166,7 +166,12 @@ public class MedicinePot : MonoBehaviour
         Debug.Log("���б�ҪҩƷ��ѡ�񣬿�ʼ��ҩ");
         isSelecting = false;
         animator.Play("MedicinePot_PutMedIn");
+    }
 
+    // 供动画事件调用的方法
+    public void OnAnimationEnd()
+    {
+        DestoryThePot();
     }
 
     private void DestoryThePot()

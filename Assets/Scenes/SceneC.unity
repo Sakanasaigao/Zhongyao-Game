@@ -246,6 +246,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u4EBA\u53C2"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.52
@@ -324,6 +332,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u963F\u80F6"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -401,6 +417,14 @@ PrefabInstance:
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u8700\u6912"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -797,6 +821,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u6842\u679D"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.2
@@ -998,6 +1030,14 @@ PrefabInstance:
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u5927\u67A3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1234,6 +1274,14 @@ PrefabInstance:
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u7518\u8349"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1623,6 +1671,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u9EC4\u82A9"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.4
@@ -1789,6 +1845,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u4E4C\u6885"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.87
@@ -1936,6 +2000,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u9E21\u5B50\u9EC4"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.4
@@ -2046,6 +2118,14 @@ PrefabInstance:
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u534A\u590F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2205,6 +2285,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u67F4\u80E1"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2283,6 +2371,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u9EC4\u67CF"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.36
@@ -2360,6 +2456,14 @@ PrefabInstance:
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u7EC6\u8F9B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2508,6 +2612,14 @@ PrefabInstance:
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u9EC4\u8FDE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2737,6 +2849,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u9644\u5B50"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.9
@@ -2848,6 +2968,14 @@ PrefabInstance:
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u5F53\u5F52"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3065,6 +3193,14 @@ PrefabInstance:
       propertyPath: medicineName
       value: "\u751F\u59DC"
       objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2
@@ -3175,6 +3311,14 @@ PrefabInstance:
     - target: {fileID: 3775103203934657894, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: medicineName
       value: "\u767D\u828D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398224251722056350, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8490280012004888648, guid: f52e192f6b44a5f469997ac6305299d4, type: 3}
       propertyPath: m_LocalPosition.x

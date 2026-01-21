@@ -70,13 +70,15 @@ namespace MEDICINE
             string[] levelSpecificMedicines = targetMeds;
             Debug.Log(levelSpecificMedicines.Length);
 
-            var(targetIndex, allMedicineToPut) = MergeAndShuffle(targetMeds, new string[0]);
+            // 简化逻辑，直接使用目标药品数组，不需要打乱
+            string[] allMedicineToPut = targetMeds;
 
             if (MedicinePotManager.Instance != null)
             {
                 Debug.Log("Creating MedicinePot");
                 Debug.Log(allMedicineToPut.Length);
-                MedicinePotManager.Instance.CreateMedicinePot(targetIndex, allMedicineToPut, position, file);
+                // 传递正确的目标药品名称数组
+                MedicinePotManager.Instance.CreateMedicinePot(targetMeds, allMedicineToPut, position, file);
                 SceneAMenu.Instance.CloseMountain();
             }
             else

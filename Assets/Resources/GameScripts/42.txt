@@ -6,4 +6,4 @@ narrator "师傅枯指点向泛黄书页，烛光在药名间流淌"
 narrator "你依然记得这味“乌梅丸”，需要需乌梅三百枚、细辛六两、生姜十两、黄连十六两、附子六两、当归四两、蜀椒四两。"
 
 CloseLoader()
-CreateMedicinePot(-t "乌梅 细辛 生姜 黄连 附子 当归 蜀椒" -c 8 -f 43)
+CreateMedicinePot(-t "乌梅 细辛 生姜 黄连 附子 当归 蜀椒" -c 7 -f 43)

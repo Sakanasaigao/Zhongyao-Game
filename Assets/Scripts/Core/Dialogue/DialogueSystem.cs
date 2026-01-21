@@ -92,8 +92,9 @@ namespace DIALOGUE
         private const float longPressThreshold = 2f; // 长按阈值（秒）
         
         // 开发后门相关变量
-        private string inputBuffer = ""; // 输入缓冲区
+        private string inputBuffer = "";
         private const string CHEAT_CODE = "==="; // 作弊码
+        private const string SKIP_SCRIPT_CODE = "+++"; // 跳转到下一个脚本的作弊码
 
         private void Update()
         {
@@ -166,6 +167,39 @@ namespace DIALOGUE
                         Debug.Log("Cheat code detected! Jumping to Chapter 4...");
                         // 跳转到第四章
                         CommandManager.instance.Execute("startdialogue", "-f", "41");
+                        // 清空输入缓冲区
+                        inputBuffer = "";
+                    }
+                    // 检测跳转到下一个脚本的作弊码
+                    else if (inputBuffer == SKIP_SCRIPT_CODE)
+                    {
+                        Debug.Log("Skip script code detected! Jumping to next script...");
+                        
+                        // 获取当前脚本ID
+                        if (DialogueManager.instance != null && DialogueManager.instance.FileToRead != null)
+                        {
+                            string currentScript = DialogueManager.instance.FileToRead.name;
+                            if (!string.IsNullOrEmpty(currentScript))
+                            {
+                                try
+                                {
+                                    // 去掉文件扩展名，如"41.txt" → "41"
+                                    string scriptId = System.IO.Path.GetFileNameWithoutExtension(currentScript);
+                                    
+                                    // 直接将当前脚本ID + 1，实现X1→X2跳转
+                                    int scriptNumber = int.Parse(scriptId);
+                                    string nextScript = (scriptNumber + 1).ToString();
+                                    
+                                    // 执行跳转命令
+                                    CommandManager.instance.Execute("startdialogue", "-f", nextScript);
+                                }
+                                catch (System.Exception e)
+                                {
+                                    Debug.LogError($"Failed to skip script: {e.Message}");
+                                    Debug.LogError($"Current script name: {currentScript}");
+                                }
+                            }
+                        }
                         // 清空输入缓冲区
                         inputBuffer = "";
                     }

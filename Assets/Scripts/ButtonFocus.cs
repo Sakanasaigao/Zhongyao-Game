@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.EventSystems; // 用于处理事件系统
+using UnityEngine.EventSystems; 
 
 public class ButtonFocus : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class ButtonFocus : MonoBehaviour
         }
     }
 
-    // 鼠标悬停时调用
+    
     public void OnPointerEnter()
     {
         if (animator != null)
@@ -24,7 +24,6 @@ public class ButtonFocus : MonoBehaviour
         }
     }
 
-    // 鼠标离开时调用
     public void OnPointerExit()
     {
         if (animator != null)
