@@ -29,7 +29,7 @@ public class MedicinePotManager : MonoBehaviour
     {
         if (ykgrPrefab == null)
         {
-            Debug.LogError("ҩ��Ԥ����δ���䣡");
+            Debug.LogError("dd!");
             return null;
         }
         Debug.Log(allMedicineNames.Length + "diergekdjfie");
@@ -51,7 +51,7 @@ public class MedicinePotManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("MedicinePot�ű�δ���ӵ�Ԥ���壡");
+            Debug.LogError("MedicinePot");
             Destroy(medicinePot);
             return null;
         }
