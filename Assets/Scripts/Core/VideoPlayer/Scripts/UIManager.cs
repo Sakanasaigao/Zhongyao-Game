@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup videoCanvasGroup;
     [SerializeField] private CanvasGroup backgroundCanvasGroup;
     [SerializeField] private CanvasGroup UIRootCanvasGroup;
-    [SerializeField] private Image loadingIndicator;
+    [SerializeField] private Image skipIcon;
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private AspectRatioFitter aspectRatioFitter;
 
@@ -20,6 +20,19 @@ public class UIManager : MonoBehaviour
 
     private bool uiIsShowing;
     private Coroutine fadeOffCoroutine;
+    private Material skipIconMt => skipIcon.material;
+
+    public void HandleSkipIcon(float skipTimeThreshold, float currantTime)
+    {
+        float progress = currantTime / skipTimeThreshold;
+
+        SetSkipIconProgress(progress);
+    }
+
+    private void SetSkipIconProgress(float progress)
+    {
+        skipIconMt.SetFloat("_Progress", progress);
+    }
 
     public void ShowUITemporarily(float alpha, float showTime, float fadeDuration)
     {
@@ -67,31 +80,5 @@ public class UIManager : MonoBehaviour
             .OnComplete(() => {
                 Destroy(rootCanvasGroup.gameObject);
             });
-    }
-
-    public void SetFadeAlpha(float alpha)
-    {
-        videoCanvasGroup.alpha = alpha;
-    }
-
-    public void UpdateLoadingProgress(float progress)
-    {
-        if (loadingIndicator != null)
-        {
-            loadingIndicator.fillAmount = progress;
-        }
-
-        if (loadingText != null)
-        {
-            loadingText.text = $"Loading... {Mathf.RoundToInt(progress * 100)}%";
-        }
-    }
-
-    public void SetVideoAspectRatio(float aspectRatio)
-    {
-        if (aspectRatioFitter != null)
-        {
-            aspectRatioFitter.aspectRatio = aspectRatio;
-        }
     }
 }

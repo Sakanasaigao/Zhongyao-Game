@@ -30,7 +30,6 @@ public class EventManager : MonoBehaviour
         if (input.IsHoldingSkipKey)
         {
             skipPressTime += Time.deltaTime;
-            Debug.Log(skipPressTime);
             uiManager.ShowUITemporarily(showUIAlpha, showUITime, fadeDuration);
         }
         else
@@ -44,5 +43,6 @@ public class EventManager : MonoBehaviour
             uiManager.FadeOutAndDestroyRoot(1f);
         }
 
+        uiManager.HandleSkipIcon(skipThreshold, skipPressTime);
     }
 }
