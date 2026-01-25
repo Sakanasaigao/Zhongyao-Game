@@ -6,7 +6,6 @@ public class MedicinePotManager : MonoBehaviour
     public static MedicinePotManager Instance { get; private set; }
 
     [SerializeField] private GameObject ykgrPrefab;
-    [SerializeField] private string resetAnimationName = "MedicinePot_Reset";
 
     private void Awake()
     {
