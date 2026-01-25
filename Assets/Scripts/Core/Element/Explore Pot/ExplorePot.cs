@@ -14,6 +14,7 @@ public class ExplorePot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private Vector3 originalScale;
     private Coroutine currentCoroutine;
+    private bool isAnimating;
 
     void Start()
     {
