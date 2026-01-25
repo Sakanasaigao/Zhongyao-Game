@@ -11,6 +11,7 @@
  * - 管理玩家对象和游戏全局状态
  */
 using UnityEngine;
+using UnityEngine.UI; // UI布局系统
 using System.IO; // �����ļ�����
 using System.Runtime.Serialization.Formatters.Binary; // ���ڶ��������л�
 
@@ -26,6 +27,9 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            
+            // 强制所有Canvas重新计算布局，解决EndLayoutGroup错误
+            Canvas.ForceUpdateCanvases();
         }
         else
         {

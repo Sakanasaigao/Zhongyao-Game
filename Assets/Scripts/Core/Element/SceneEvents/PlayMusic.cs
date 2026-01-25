@@ -14,6 +14,13 @@ public class PlayMusic : MonoBehaviour
 
     void Start()
     {
-        CommandManager.instance.Execute("PlaySong", "-s", musicName, "-l", musicLoop, "-v", musicVolume);
+        if (CommandManager.instance != null && AudioClip != null)
+        {
+            CommandManager.instance.Execute("PlaySong", "-s", musicName, "-l", musicLoop, "-v", musicVolume);
+        }
+        else
+        {
+            Debug.LogWarning("CommandManager instance or AudioClip is null, cannot play music.");
+        }
     }
 }

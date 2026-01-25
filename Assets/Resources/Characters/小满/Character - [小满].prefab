@@ -1,18 +1,19 @@
 %YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
+%TAG !u! tag:yousandi.cn,2023:
 --- !u!1 &1009300470029420959
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 6307395619055809366}
   - component: {fileID: 4875024534608906470}
   - component: {fileID: 3298753001217996557}
   - component: {fileID: 8684478754346183204}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,10 +34,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5120711702874519188}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60.1, y: 185.5}
-  m_SizeDelta: {x: 92.991, y: 90.607}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -58, y: 259}
+  m_SizeDelta: {x: -1131.592, y: -1502.661}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4875024534608906470
 CanvasRenderer:
@@ -94,12 +95,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 3208137267490214495}
   - component: {fileID: 1062365870689789187}
   - component: {fileID: 8596746558556640110}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Anim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +138,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!95 &8596746558556640110
 Animator:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,6 +149,8 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 8de3f228ea7132a4c9cbd272004d0f59, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
+  m_UpdateFrequencyMode: 0
+  m_UpdateFrequency: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -161,12 +165,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 8653956796697381953}
   - component: {fileID: 8858602642043271604}
   - component: {fileID: 3838334734743885943}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: "Character - [\u5C0F\u6EE1]"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,10 +224,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 2883990632022155641}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Layer 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,10 +261,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 5120711702874519188}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Layer 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,10 +298,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 2964607760303509156}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Renderers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,13 +336,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 5538913773520022448}
   - component: {fileID: 4239330794782509515}
   - component: {fileID: 2442240762871782127}
   - component: {fileID: 6175095744737111856}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: FullBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
