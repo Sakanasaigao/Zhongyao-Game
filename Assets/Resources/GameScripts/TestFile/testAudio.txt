@@ -1,6 +1,0 @@
-CreateCharacter(Alia -i true)
-Show(Alia -spd 0.01)
-
-Alia "hhhhhh"
-
-playsfx(Birdsong -v 0.8 -p 1)
