@@ -519,7 +519,6 @@ GameObject:
   m_Component:
   - component: {fileID: 467932425}
   - component: {fileID: 467932427}
-  - component: {fileID: 467932426}
   m_Layer: 0
   m_Name: Particle
   m_TagString: Untagged
@@ -542,20 +541,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1032082156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &467932426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467932424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0519815ae06f754d83fa7588d5b08a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetMultiplier: -0.1
-  smoothTime: 0.3
 --- !u!212 &467932427
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1040,6 +1025,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxCamera: {fileID: 0}
+  parallaxEffectMultiplier: {x: 0, y: 0}
+  infiniteHorizontal: 0
+  infiniteVertical: 0
 --- !u!1 &1171643506 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7722909924725521807, guid: 6482cc3cea9a013459921d67f8925725, type: 3}
@@ -1088,7 +1076,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1406252437}
   - component: {fileID: 1406252438}
-  - component: {fileID: 1406252439}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -1163,20 +1150,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1406252439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406252436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0519815ae06f754d83fa7588d5b08a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetMultiplier: -0.3
-  smoothTime: 0.3
 --- !u!1 &1443127935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6212618863070456886, guid: 6482cc3cea9a013459921d67f8925725, type: 3}
@@ -1191,7 +1164,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451094319}
-  - component: {fileID: 1451094320}
   m_Layer: 0
   m_Name: Flowers
   m_TagString: Untagged
@@ -1217,20 +1189,6 @@ Transform:
   - {fileID: 1733128976}
   m_Father: {fileID: 1032082156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1451094320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451094318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0519815ae06f754d83fa7588d5b08a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetMultiplier: -0.2
-  smoothTime: 0.3
 --- !u!1 &1697394272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1199,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1697394274}
   - component: {fileID: 1697394273}
-  - component: {fileID: 1697394275}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1316,20 +1273,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1032082156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1697394275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697394272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0519815ae06f754d83fa7588d5b08a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetMultiplier: 0
-  smoothTime: 0.3
 --- !u!1 &1733128975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,8 +1576,12 @@ PrefabInstance:
       propertyPath: dialogueLoader
       value: 
       objectReference: {fileID: 1930003968}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 8589981198823047308, guid: 6482cc3cea9a013459921d67f8925725, type: 3}
+    - {fileID: 4922253925091578469, guid: 6482cc3cea9a013459921d67f8925725, type: 3}
+    - {fileID: 1633261677205754753, guid: 6482cc3cea9a013459921d67f8925725, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 962616817356788411, guid: 6482cc3cea9a013459921d67f8925725, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9223182539506441520, guid: 6482cc3cea9a013459921d67f8925725, type: 3}

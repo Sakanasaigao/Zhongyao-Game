@@ -6,7 +6,6 @@ public class MedicinePotManager : MonoBehaviour
     public static MedicinePotManager Instance { get; private set; }
 
     [SerializeField] private GameObject ykgrPrefab;
-    [SerializeField] private string resetAnimationName = "MedicinePot_Reset";
 
     private void Awake()
     {
@@ -29,7 +28,7 @@ public class MedicinePotManager : MonoBehaviour
     {
         if (ykgrPrefab == null)
         {
-            Debug.LogError("ҩ��Ԥ����δ���䣡");
+            Debug.LogError("dd!");
             return null;
         }
         Debug.Log(allMedicineNames.Length + "diergekdjfie");
@@ -51,7 +50,7 @@ public class MedicinePotManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("MedicinePot�ű�δ���ӵ�Ԥ���壡");
+            Debug.LogError("MedicinePot");
             Destroy(medicinePot);
             return null;
         }
