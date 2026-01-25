@@ -18,6 +18,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private VideoPlayerController videoPlayer;
 
     private float skipPressTime;
+    private bool isSkipped = false;
 
     void Start()
     {
@@ -39,8 +40,13 @@ public class EventManager : MonoBehaviour
 
         if (skipPressTime > skipThreshold)
         {
-            videoPlayer.SkipVideo();
-            uiManager.FadeOutAndDestroyRoot(1f);
+            if (!isSkipped)
+            {
+                videoPlayer.SkipVideo();
+                uiManager.FadeOutAndDestroyRoot(1f);
+
+                isSkipped = true;
+            }
         }
 
         uiManager.HandleSkipIcon(skipThreshold, skipPressTime);
