@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskID: "\u56DB\u9006\u6C64"
   taskName: "\u56DB\u9006\u6C64"
-  description: 
+  description: "第五章四逆汤"
   conditions:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 903fe00e1ead8364bbe6ca3eccbfd654, type: 2}
   taskDependency: []
   onCompleteCommandNames: StartDialogue(-f 52)

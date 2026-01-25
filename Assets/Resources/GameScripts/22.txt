@@ -5,4 +5,4 @@ narrator ""
 老药师 "接下来要煎熬的桂枝汤，需柴胡四钱、黄芩两钱、半夏三钱、人参一钱、甘草一钱、生姜三片、大枣五枚。"
 
 CloseLoader()
-CreateMedicinePot(-t "柴胡 黄芩 半夏 人参 甘草 生姜 大枣" -c 8 -f 23)
+CreateMedicinePot(-t "柴胡 黄芩 半夏 人参 甘草 生姜 大枣" -c 7 -f 23)

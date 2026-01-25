@@ -1,2 +1,0 @@
-addmedicinetowarehouse(-i 黄连)
-PutMedicineonCounter(-c 1 -n 黄连)

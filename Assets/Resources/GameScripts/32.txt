@@ -5,4 +5,4 @@ narrator ""
 老药师 "接下来要煎熬的黄连阿胶汤需黄连两钱、黄芩一钱、阿胶三钱、白芍两钱、鸡子黄一枚。"
 
 CloseLoader()
-CreateMedicinePot(-t "黄连 黄芩 阿胶 白芍 鸡子黄" -c 8 -f 33)
+CreateMedicinePot(-t "黄连 黄芩 阿胶 白芍 鸡子黄" -c 5 -f 33)

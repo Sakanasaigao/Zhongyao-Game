@@ -16,6 +16,6 @@ MonoBehaviour:
   taskName: "第四章药品"
   description: "第四章收集药品"
   conditions:
-  - {fileID: 11400000, guid: e90845d13f2f09a468c32b38a0430567, type: 2}
+  - {fileID: 11400000, guid: c8e88c152b5ee8c49baf8567a9790956, type: 2}
   taskDependency: []
   onCompleteCommandNames: StartDialogue(-f 42)

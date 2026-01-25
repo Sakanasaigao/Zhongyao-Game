@@ -1,2 +1,0 @@
-Wait(3)
-CreateMedicinePot(-t "黄连" -c 1)
