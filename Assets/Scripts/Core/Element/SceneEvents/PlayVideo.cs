@@ -21,9 +21,20 @@ public class PlayVideo : MonoBehaviour
         videoPlayerController = videoPlayer.GetComponent<VideoPlayerController>();
 
         videoPlayerController.OnVideoComplete += OnVideoEnd;
+        videoPlayerController.OnVideoError += OnVideoError;
         CommandManager.instance.Execute("StopSong");
 
+        // 初始化视频系统
+        videoPlayerController.InitializeVideoSystem();
+        Debug.Log("初始化视频系统完成");
+        
         videoPlayerController.PlayVideo("01.mp4", true);
+        Debug.Log("开始播放视频: 01.mp4");
+    }
+
+    private void OnVideoError(string errorMessage)
+    {
+        Debug.LogError("视频播放错误: " + errorMessage);
     }
 
     private void OnVideoEnd()
@@ -36,6 +47,7 @@ public class PlayVideo : MonoBehaviour
         if (videoPlayerController != null)
         {
             videoPlayerController.OnVideoComplete -= OnVideoEnd;
+            videoPlayerController.OnVideoError -= OnVideoError;
         }
     }
 
