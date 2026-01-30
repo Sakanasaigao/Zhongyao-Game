@@ -11,5 +11,6 @@ namespace DIALOGUE
 
         public Color defaultTextColor = Color.white;
         public TMP_FontAsset defaultFont;
+        public KeyCode skipKey = KeyCode.Space;
     }
 }
