@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CHARACTERS;
@@ -41,6 +42,20 @@ namespace DIALOGUE
 
             architect = new TextArchitect(dialogueContainer.dialogueText);
             conversationManager = new ConversationManager(architect);
+            string keyName = GetLocalizedKeyName(_config.skipKey);
+            dialogueContainer.skipTipText.text = $"按{keyName}跳过";
+        }
+
+        private string GetLocalizedKeyName(KeyCode skipKey)
+        {
+            switch (skipKey)
+            {
+                case KeyCode.Space: return "空格";
+                case KeyCode.Return: return "回车";
+                case KeyCode.Escape: return "ESC";
+                case (KeyCode.LeftControl or KeyCode.RightControl): return "Ctrl";
+                default: return skipKey.ToString().ToUpper();
+            }
         }
 
         public void OnUserPrompt_Next()
@@ -85,37 +100,29 @@ namespace DIALOGUE
             return conversationManager.StartConversation(conversation);
         }
 
-        // 空格键长按相关变量
-        private float spaceKeyPressTime = 0f;
+        private float skipKeyPressTime = 0f;
         private bool isLongPressActivated = false;
         private bool isAutoForwarding = false;
-        private const float longPressThreshold = 2f; // 长按阈值（秒）
+        private const float longPressThreshold = 2f;
         
-        // 开发后门相关变量
         private string inputBuffer = "";
-        private const string CHEAT_CODE = "==="; // 作弊码
+        private const string CHEAT_CODE = "===";
         private const string SKIP_SCRIPT_CODE = "+++"; // 跳转到下一个脚本的作弊码
 
         private void Update()
         {
-            // 检测空格键输入
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(_config.skipKey))
             {
-                // 空格键被按住，增加计时
-                spaceKeyPressTime += Time.deltaTime;
+                skipKeyPressTime += Time.deltaTime;
                 
-                // 如果正在显示对话文本
                 if (architect != null && architect.isBuilding)
                 {
-                    // 设置hurryUp为true，使文本快进显示
                     architect.hurryUp = true;
                 }
                 else
                 {
-                    // 如果文本已经显示完成
                     if (!isLongPressActivated)
                     {
-                        // 短按触发下一段对话
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
                             OnUserPrompt_Next();
@@ -123,8 +130,7 @@ namespace DIALOGUE
                     }
                 }
                 
-                // 检测是否达到长按阈值
-                if (spaceKeyPressTime >= longPressThreshold && !isLongPressActivated)
+                if (skipKeyPressTime >= longPressThreshold && !isLongPressActivated)
                 {
                     isLongPressActivated = true;
                     isAutoForwarding = true;
@@ -132,50 +138,38 @@ namespace DIALOGUE
             }
             else
             {
-                // 空格键松开，重置计时和状态
-                spaceKeyPressTime = 0f;
+                skipKeyPressTime = 0f;
                 isLongPressActivated = false;
                 isAutoForwarding = false;
             }
             
-            // 自动快进逻辑
             if (isAutoForwarding && architect != null && !architect.isBuilding)
             {
-                // 如果当前没有正在显示的文本，自动触发下一段对话
                 OnUserPrompt_Next();
             }
             
-            // 开发后门：检测连续输入 ===
             if (Input.anyKeyDown)
             {
-                // 获取按下的键
                 string key = Input.inputString;
                 if (!string.IsNullOrEmpty(key))
                 {
-                    // 添加到输入缓冲区
                     inputBuffer += key;
                     
-                    // 只保留最后3个字符
                     if (inputBuffer.Length > 3)
                     {
                         inputBuffer = inputBuffer.Substring(inputBuffer.Length - 3);
                     }
                     
-                    // 检测作弊码
                     if (inputBuffer == CHEAT_CODE)
                     {
                         Debug.Log("Cheat code detected! Jumping to Chapter 4...");
-                        // 跳转到第四章
                         CommandManager.instance.Execute("startdialogue", "-f", "41");
-                        // 清空输入缓冲区
                         inputBuffer = "";
                     }
-                    // 检测跳转到下一个脚本的作弊码
                     else if (inputBuffer == SKIP_SCRIPT_CODE)
                     {
                         Debug.Log("Skip script code detected! Jumping to next script...");
                         
-                        // 获取当前脚本ID
                         if (DialogueManager.instance != null && DialogueManager.instance.FileToRead != null)
                         {
                             string currentScript = DialogueManager.instance.FileToRead.name;
@@ -183,14 +177,11 @@ namespace DIALOGUE
                             {
                                 try
                                 {
-                                    // 去掉文件扩展名，如"41.txt" → "41"
                                     string scriptId = System.IO.Path.GetFileNameWithoutExtension(currentScript);
                                     
-                                    // 直接将当前脚本ID + 1，实现X1→X2跳转
                                     int scriptNumber = int.Parse(scriptId);
                                     string nextScript = (scriptNumber + 1).ToString();
                                     
-                                    // 执行跳转命令
                                     CommandManager.instance.Execute("startdialogue", "-f", nextScript);
                                 }
                                 catch (System.Exception e)
@@ -200,7 +191,6 @@ namespace DIALOGUE
                                 }
                             }
                         }
-                        // 清空输入缓冲区
                         inputBuffer = "";
                     }
                 }
