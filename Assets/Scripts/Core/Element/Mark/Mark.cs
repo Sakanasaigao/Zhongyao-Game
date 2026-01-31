@@ -2,21 +2,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UI;
 
+[RequireComponent(typeof(UI.SimpleHighlightEffect))]
 public class Mark : MonoBehaviour, IPointerClickHandler
 {
     public int theSceneToJumpTo;
     public Vector3 cameraPositon;
-    private string transitionStyle = "Cloud";
+    private const string transitionStyle = "Cloud";
     
     [Header("Highlight Settings")]
     [SerializeField] private bool enableHighlight = true;
-    [SerializeField] private Color highlightColor = Color.yellow;
     [SerializeField] private float highlightSpeed = 1f;
 
-    private CameraManager cameraManager => CameraManager.instance;
+    private CameraManager CameraManager => CameraManager.instance;
     private UI.SimpleHighlightEffect highlightComponent;
 
-    SceneLoaderManager loaderManager => SceneLoaderManager.Instance;
+    SceneLoaderManager LoaderManager => SceneLoaderManager.Instance;
 
     private void Awake()
     {
@@ -29,13 +29,13 @@ public class Mark : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        loaderManager.TransitionToScene(transitionStyle, theSceneToJumpTo, 1f, OnSceneTransitionDone);
+        LoaderManager.TransitionToScene(transitionStyle, theSceneToJumpTo, 1f, OnSceneTransitionDone);
 
     }
 
     private void OnSceneTransitionDone()
     {
-        cameraManager.SetCameraPosition(cameraPositon);
+        CameraManager.SetCameraPosition(cameraPositon);
     }
 
     public void UnlockThisMark()

@@ -4,10 +4,11 @@ using DG.Tweening;
 
 namespace UI
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class OutlineHighlight2D : MonoBehaviour
     {
         [Header("Outline Settings")]
-        [SerializeField] private Color outlineColor = new Color(0f, 1f, 1f); // 亮蓝色，更醒目
+        [SerializeField] private Color outlineColor = Color.cyan; // 亮蓝色，更醒目
         [SerializeField] private float animationSpeed = 0.8f; // 更快的动画速度
         [SerializeField] private bool isAnimated = true;
         [SerializeField] private bool autoStart = false;
@@ -16,7 +17,6 @@ namespace UI
 
         private SpriteRenderer spriteRenderer;
         private Image uiImage;
-        private Transform transform;
         private Material originalMaterial;
         private Material outlineMaterial;
         private Color originalColor;
@@ -26,7 +26,6 @@ namespace UI
 
         private void Awake()
         {
-            transform = GetComponent<Transform>();
             originalScale = transform.localScale;
             
             // 尝试获取SpriteRenderer
@@ -57,7 +56,7 @@ namespace UI
 
         private void CreateOutlineMaterial()
         {
-            outlineMaterial = new Material(Shader.Find("Sprites/Default"));
+            outlineMaterial = new(Shader.Find("Sprites/Default"));
             outlineMaterial.color = outlineColor;
         }
 
@@ -198,15 +197,8 @@ namespace UI
 
         private void OnDestroy()
         {
-            if (colorTween != null)
-            {
-                colorTween.Kill();
-            }
-            
-            if (scaleTween != null)
-            {
-                scaleTween.Kill();
-            }
+            colorTween?.Kill();
+            scaleTween?.Kill();
 
             if (outlineMaterial != null)
             {

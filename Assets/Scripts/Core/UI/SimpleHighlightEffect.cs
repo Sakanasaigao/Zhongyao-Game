@@ -3,24 +3,24 @@ using UnityEngine.UI;
 
 namespace UI
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class SimpleHighlightEffect : MonoBehaviour
     {
         [Header("Highlight Settings")]
-        [SerializeField] private Color highlightColor = new Color(0f, 1f, 1f); // 亮蓝色，更醒目
-        [SerializeField] private float animationSpeed = 1.0f; // 动画速度
-        [SerializeField] private float scaleIntensity = 1.2f; // 缩放强度
-        [SerializeField] private bool autoStart = true; // 是否自动开始
+        [SerializeField] private Color highlightColor = Color.yellow;
+        [SerializeField] private float animationSpeed = 2.0f;
+        [SerializeField] private float scaleIntensity = 1.3f;
+        [SerializeField] private bool autoStart = true;
 
         private SpriteRenderer spriteRenderer;
         private Image uiImage;
-        private Transform transform;
         private Color originalColor;
         private Vector3 originalScale;
         private float time;
+        private bool isHighlighting = false;
 
         private void Awake()
         {
-            transform = GetComponent<Transform>();
             originalScale = transform.localScale;
             
             // 尝试获取SpriteRenderer
@@ -55,8 +55,6 @@ namespace UI
             }
         }
 
-        private bool isHighlighting = false;
-
         public void StartHighlight()
         {
             isHighlighting = true;
@@ -77,10 +75,7 @@ namespace UI
                 uiImage.color = originalColor;
             }
             
-            if (transform != null)
-            {
-                transform.localScale = originalScale;
-            }
+            transform.localScale = originalScale;
         }
 
         private void UpdateAnimation()
@@ -103,10 +98,7 @@ namespace UI
             
             // 应用缩放动画
             float scale = Mathf.Lerp(1f, scaleIntensity, t);
-            if (transform != null)
-            {
-                transform.localScale = originalScale * scale;
-            }
+            transform.localScale = originalScale * scale;
         }
 
         public void SetHighlightColor(Color color)
