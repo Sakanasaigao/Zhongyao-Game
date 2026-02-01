@@ -76,8 +76,22 @@ namespace DIALOGUE
             if (line.hasSpeaker)
                 HandleSpeakerLogic(line.speakerData);
 
+            // _LogDialogue(line);
+            PassedDialogueLineManager.instance.AddLineToPassedLines(line);
+            
             // Build dialogue
             yield return BuildLineSegments(line.dialogueData);
+        }
+
+        private void _LogDialogue(DIALOGUE_LINE line)
+        {
+            List<DL_DIALOGUE_DATA.DIALOGUE_SEGMENT> segments = line.dialogueData.segments;
+            DL_SPEAKER_DATA speaker = line.speakerData;
+            Debug.Log(speaker.displayname);
+            foreach (var item in segments)
+            {
+                Debug.Log(item.dialogue);
+            }
         }
 
         private void HandleSpeakerLogic(DL_SPEAKER_DATA speakerData)

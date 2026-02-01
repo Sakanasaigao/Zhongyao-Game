@@ -15,7 +15,7 @@ namespace DIALOGUE
         private ConversationManager conversationManager;
         private TextArchitect architect;
 
-        private const string narratorName = "narrator";
+        public const string narratorName = "narrator";
 
         public static DialogueSystem instance { get; private set; }
 
