@@ -1,37 +1,36 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using UI;
 
 [DisallowMultipleComponent]
 public class SceneBHighlightManager : MonoBehaviour
 {
-    // 硬编码五关的红圈圈位置（根据SceneB.unity文件中的实际Mark位置）
+    // 硬编码五关的红圈圈位置（根据用户要求分配）
     private Vector3[][] levelCirclePositions = new Vector3[][] {
-        // 第一关新增的红圈圈位置（右上角山顶）
+        // 第一关：mark4的位置（中间偏右山峰）
         new Vector3[] {
-            new Vector3(3.59f, 4.48f, 0f)  // 右上角山顶附近的红圈圈（从SceneB.unity中获取）
+            new Vector3(3.77f, 1.88f, 0f)  // mark4的位置
         },
-        // 第二关新增的红圈圈位置（中间偏右山峰）
+        // 第二关：mark3的位置（右上角山顶）
         new Vector3[] {
-            new Vector3(3.77f, 1.88f, 0f)  // 中间偏右山峰上的红圈圈（从SceneB.unity中获取）
+            new Vector3(3.59f, 4.48f, 0f)  // mark3的位置
         },
-        // 第三关新增的红圈圈位置（中间位置）
+        // 第三关：mark5的位置（右下角）
         new Vector3[] {
-            new Vector3(0.32f, -0.51f, 0f)  // 中间位置的红圈圈（从SceneB.unity中获取）
+            new Vector3(5.87f, -2.65f, 0f)  // mark5的位置
         },
-        // 第四关新增的红圈圈位置（右下角）
+        // 第四关：mark1和mark2的位置（中间位置和左下角）
         new Vector3[] {
-            new Vector3(5.87f, -2.65f, 0f)  // 右下角的红圈圈（从SceneB.unity中获取）
+            new Vector3(0.32f, -0.51f, 0f),  // mark1的位置
+            new Vector3(-1.34f, -3.81f, 0f)   // mark2的位置
         },
-        // 第五关新增的红圈圈位置（左下角）
-        new Vector3[] {
-            new Vector3(-1.34f, -3.81f, 0f)  // 左下角的红圈圈（从SceneB.unity中获取）
-        }
+        // 第五关：空数组，全部动画都关掉
+        new Vector3[] {}
     };
 
     private PlayerManager playerManager;
     private GameObject circlesParent;
-    private Color highlightColor = new Color(0f, 1f, 1f); // 亮蓝色
     private float animationSpeed = 1.0f;
     private bool initialized = false;
 
@@ -156,9 +155,15 @@ public class SceneBHighlightManager : MonoBehaviour
             Vector3[] positions = levelCirclePositions[level];
             Debug.Log("SceneBHighlightManager: Level " + (level + 1) + " has " + positions.Length + " circles");
             
+            // 只为当前关卡的红圈圈添加动画
+            // 第五关全部动画都关掉
+            bool addHighlight = level == currentLevel - 1 && currentLevel < 5;
+            Debug.Log("SceneBHighlightManager: Level " + (level + 1) + " - addHighlight: " + addHighlight);
+            
             foreach (Vector3 position in positions)
             {
-                CreateCircle(position, level == currentLevel - 1); // 只为当前关新增的红圈圈加高光
+                Debug.Log("SceneBHighlightManager: Creating circle at position " + position + " with addHighlight: " + addHighlight);
+                CreateCircle(position, addHighlight);
             }
         }
     }
@@ -185,14 +190,13 @@ public class SceneBHighlightManager : MonoBehaviour
         
         Debug.Log("SceneBHighlightManager: Created circle at position: " + position + ", addHighlight: " + addHighlight);
         
-        // 如果是当前关新增的红圈圈，添加高光效果
+        // 如果是当前关新增的红圈圈，添加缩放动画
         if (addHighlight)
         {
             SimpleHighlightEffect highlight = circle.AddComponent<SimpleHighlightEffect>();
-            highlight.SetHighlightColor(highlightColor);
             highlight.SetAnimationSpeed(animationSpeed);
-            highlight.StartHighlight();
-            Debug.Log("SceneBHighlightManager: Added highlight effect to circle");
+            highlight.StartAnimation();
+            Debug.Log("SceneBHighlightManager: Added scale animation to circle");
         }
     }
 
