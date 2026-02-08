@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UI;
 
-[RequireComponent(typeof(UI.SimpleHighlightEffect))]
 public class Mark : MonoBehaviour, IPointerClickHandler
 {
     public int theSceneToJumpTo;
@@ -14,17 +12,14 @@ public class Mark : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float highlightSpeed = 1f;
 
     private CameraManager CameraManager => CameraManager.instance;
-    private UI.SimpleHighlightEffect highlightComponent;
+    // 移除对SimpleHighlightEffect的依赖
 
     SceneLoaderManager LoaderManager => SceneLoaderManager.Instance;
 
     private void Awake()
     {
-        highlightComponent = GetComponent<UI.SimpleHighlightEffect>();
-        if (highlightComponent == null)
-        {
-            highlightComponent = gameObject.AddComponent<UI.SimpleHighlightEffect>();
-        }
+        // 移除对SimpleHighlightEffect的依赖
+        Debug.Log("Mark: Animation functionality disabled");
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -40,34 +35,25 @@ public class Mark : MonoBehaviour, IPointerClickHandler
 
     public void UnlockThisMark()
     {
-        if (enableHighlight)
-        {
-            StartHighlight();
-        }
+        // 禁用动画功能
+        Debug.Log("Mark: Animation functionality disabled");
     }
-
+    
     public void StartHighlight()
     {
-        if (highlightComponent == null)
-        {
-            highlightComponent = gameObject.AddComponent<UI.SimpleHighlightEffect>();
-        }
-        
-        highlightComponent.SetHighlightColor(Color.yellow);
-        highlightComponent.SetAnimationSpeed(2f);
-        highlightComponent.StartHighlight();
+        // 禁用动画功能
+        Debug.Log("Mark: Animation functionality disabled");
     }
 
     public void StopHighlight()
     {
-        if (highlightComponent != null)
-        {
-            highlightComponent.StopHighlight();
-        }
+        // 禁用动画功能
+        Debug.Log("Mark: Animation functionality disabled");
     }
-
+    
     public bool IsHighlighted()
     {
-        return highlightComponent != null;
+        // 禁用动画功能
+        return false;
     }
 }

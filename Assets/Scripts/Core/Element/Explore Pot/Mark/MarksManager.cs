@@ -75,21 +75,18 @@ public class MarksManager : MonoBehaviour
 
     private void ApplyHighlightEffect(GameObject mark)
     {
-        if (!mark.TryGetComponent(out UI.SimpleHighlightEffect highlight))
-        {
-            highlight = mark.AddComponent<UI.SimpleHighlightEffect>();
-        }
-
-        highlight.SetHighlightColor(highlightColor);
-        highlight.SetAnimationSpeed(highlightSpeed);
-        highlight.StartHighlight();
+        // 完全禁用动画功能，由SceneBHighlightManager统一控制
+        Debug.Log("MarksManager: Animation functionality disabled, controlled by SceneBHighlightManager");
     }
+    
+    // 移除所有与动画相关的辅助方法
+    // 这些方法不再需要，因为动画功能已由SceneBHighlightManager统一控制
 
     public void RemoveHighlightEffect(GameObject mark)
     {
         if (mark.TryGetComponent(out UI.SimpleHighlightEffect highlight))
         {
-            highlight.StopHighlight();
+            highlight.StopAnimation();
         }
     }
 
