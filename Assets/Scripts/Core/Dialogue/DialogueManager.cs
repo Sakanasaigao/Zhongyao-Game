@@ -6,15 +6,30 @@ namespace DIALOGUE
     public class DialogueManager : MonoBehaviour
     {
         [SerializeField] private TextAsset fileToRead = null;
+        [SerializeField] private GameObject dialogueItemPrefab = null;
         public TextAsset FileToRead => fileToRead;
+        public GameObject DialogueItemPrefab => dialogueItemPrefab;
         public static DialogueManager instance { get; private set; }
 
         private DialogueLoaderManager dialogueLoaderManager => DialogueLoaderManager.instance;
+        private Transform contentContainer;
 
         private void Awake()
         {
             instance = this;
         }
+
+        public void Initialize()
+        {
+            // 初始化逻辑
+        }
+
+        public void SetContentContainer(Transform container)
+        {
+            contentContainer = container;
+        }
+
+        public Transform ContentContainer => contentContainer;
 
         public void StartDialogue()
         {
