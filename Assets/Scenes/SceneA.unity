@@ -338,7 +338,7 @@ MonoBehaviour:
     m_Top: 10
     m_Bottom: 10
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -1887,7 +1887,6 @@ MonoBehaviour:
   contentParent: {fileID: 46400671}
   itemPrefab: {fileID: 1530749600860420015, guid: 079edf1a19e7f5e4c93fac60c01a45c4, type: 3}
   closeButton: {fileID: 1736343088}
-  enableTestKeys: 1
 --- !u!4 &676789964
 Transform:
   m_ObjectHideFlags: 0
@@ -10402,7 +10401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &4055271399953268580
 MonoBehaviour:
   m_ObjectHideFlags: 0
