@@ -22,6 +22,7 @@ public class ReviewManager : MonoBehaviour
         public string content;
     }
 
+    // 保存历史数据的列表
     private List<DialogueRecord> historyList = new List<DialogueRecord>();
 
     void Awake()
@@ -33,28 +34,34 @@ public class ReviewManager : MonoBehaviour
         if(reviewPanel != null) reviewPanel.SetActive(false);
 
         // ============================================================
-        // 【核心修复】：游戏一启动，立刻把按钮移出危险区！
+        // 【核心修复 保留原样】：游戏一启动，立刻把按钮移出危险区！
         // ============================================================
         if (closeButton != null && reviewPanel != null)
         {
-            // 无论它原本在哪里，强制把它变成 ReviewPanel 的直系子物体
-            // 这样它就永远不会出现在 contentParent 里被误删了
             closeButton.transform.SetParent(reviewPanel.transform, false);
-            
-            // 让它显示在最前面（防止被背景遮挡）
             closeButton.transform.SetAsLastSibling();
-
-            // 重新绑定事件
             closeButton.onClick.RemoveAllListeners();
             closeButton.onClick.AddListener(CloseReviewPanel);
         }
     }
 
+    /// <summary>
+    /// 【外部接口】请在你的对话系统（例如打字机效果结束时）调用此方法
+    /// </summary>
     public void AddDialogue(string roleName, string textContent)
     {
+        // 1. 存入数据
         DialogueRecord newRecord = new DialogueRecord { name = roleName, content = textContent };
         historyList.Add(newRecord);
-        Debug.Log($"【回顾系统】记录：{roleName}: {textContent}");
+        
+        Debug.Log($"【回顾系统】已捕获数据：{roleName}: {textContent}");
+
+        // 2. 【新增】如果面板当前是打开的，立刻生成这条 UI，实现实时刷新
+        if (reviewPanel.activeSelf)
+        {
+            GenerateSingleItem(newRecord);
+            StartCoroutine(RefreshLayoutAndScroll());
+        }
     }
 
     public void OpenReviewPanel()
@@ -63,41 +70,69 @@ public class ReviewManager : MonoBehaviour
         reviewPanel.SetActive(true);
 
         // ============================================================
-        // 2. 清空旧条目（带“免死金牌”的删除逻辑）
+        // 2. 清空旧条目（保留你的“免死金牌”逻辑）
         // ============================================================
         List<GameObject> toDestroy = new List<GameObject>();
 
         foreach (Transform child in contentParent)
         {
-            // 【免死金牌】如果名字里包含 "Close" 或者 "Button"，绝对不删！
+            // 只要名字包含 Close 或 Button 就不删
             if (child.name.Contains("Close") || child.name.Contains("Button")) 
             {
-                continue; // 跳过这个物体，去检查下一个
+                continue; 
             }
-
-            // 其他的都加入死亡名单
             toDestroy.Add(child.gameObject);
         }
 
-        // 统一处决
         foreach (var obj in toDestroy)
         {
             Destroy(obj);
         }
 
-        // 3. 生成新条目
+        // 3. 重新生成所有条目
         foreach (var record in historyList)
         {
-            GameObject newItem = Instantiate(itemPrefab, contentParent);
-            
-            Text nameText = newItem.transform.Find("NameText")?.GetComponent<Text>();
-            Text contentText = newItem.transform.Find("ContentText")?.GetComponent<Text>();
-
-            if (nameText != null) nameText.text = record.name;
-            if (contentText != null) contentText.text = record.content;
+            GenerateSingleItem(record);
         }
 
+        // 4. 刷新并滚动到底部
         StartCoroutine(RefreshLayoutAndScroll());
+    }
+
+    /// <summary>
+    /// 【新增内部方法】统一处理单条生成的逻辑，解决“读不出内容”的问题
+    /// </summary>
+    private void GenerateSingleItem(DialogueRecord record)
+    {
+        GameObject newItem = Instantiate(itemPrefab, contentParent);
+        newItem.transform.localScale = Vector3.one; // 防止UI缩放变形
+
+        // --- 核心修改：更强壮的查找逻辑 ---
+        
+        // 1. 尝试通过标准名字查找
+        Text nameText = newItem.transform.Find("NameText")?.GetComponent<Text>();
+        Text contentText = newItem.transform.Find("ContentText")?.GetComponent<Text>();
+
+        // 2. 【容错兜底】如果找不到标准名字，尝试自动抓取子物体里的 Text 组件
+        if (nameText == null || contentText == null)
+        {
+            Text[] allTexts = newItem.GetComponentsInChildren<Text>();
+            if (allTexts.Length >= 2)
+            {
+                // 假设第一个 Text 是名字，第二个是内容（根据层级顺序）
+                if (nameText == null) nameText = allTexts[0];
+                if (contentText == null) contentText = allTexts[1];
+            }
+            else if (allTexts.Length == 1)
+            {
+                // 如果只有一个 Text，那就只显示内容
+                if (contentText == null) contentText = allTexts[0];
+            }
+        }
+
+        // 3. 赋值
+        if (nameText != null) nameText.text = record.name + "："; // 加上冒号
+        if (contentText != null) contentText.text = record.content;
     }
 
     public void CloseReviewPanel()
@@ -107,23 +142,22 @@ public class ReviewManager : MonoBehaviour
 
     IEnumerator RefreshLayoutAndScroll()
     {
+        // 等待这一帧 UI 生成完毕
         yield return new WaitForEndOfFrame();
+        
+        // 强制刷新 Content 的高度
         if (contentParent.TryGetComponent<RectTransform>(out var rect))
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
         }
+        
+        // 等下一帧再滚动，确保高度计算正确
+        yield return null; 
+
+        // 滚动到底部
         ScrollRect sr = contentParent.GetComponentInParent<ScrollRect>();
         if(sr != null) sr.verticalNormalizedPosition = 0f;
     }
 
-    [Header("测试模式")]
-    public bool enableTestKeys = true;
-    void Update()
-    {
-        if (enableTestKeys && Input.GetKeyDown(KeyCode.Space))
-        {
-            AddDialogue("老者", "此去经年，应是良辰好景虚设。");
-            OpenReviewPanel(); 
-        }
-    }
+   
 }

@@ -78,7 +78,34 @@ namespace DIALOGUE
 
             // _LogDialogue(line);
             PassedDialogueLineManager.instance.AddLineToPassedLines(line);
-            
+
+            // ============================================================
+            // ã€æ ¸å¿ƒæ¤å…¥ç‚¹ã€‘: åªè¦è¿™é‡Œä¸€è·‘ï¼ŒReviewManager å°±è®°ä¸‹æ¥
+            // ============================================================
+            if (ReviewManager.Instance != null)
+            {
+                // 1. è·å–åå­—ï¼ˆå¦‚æœæ²¡æœ‰åå­—ï¼Œå°±å«"æ—ç™½"æˆ–è€…ç©ºå­—ç¬¦ä¸²ï¼‰
+                string logName = line.hasSpeaker ? line.speakerData.displayname : ""; // æˆ–è€… "æ—ç™½"
+
+                // 2. æ‹¼æ¥å†…å®¹
+                // å› ä¸ºä½ çš„å¯¹è¯ç³»ç»Ÿæ”¯æŒåˆ†æ®µï¼ˆæ¯”å¦‚ä¸­é—´æœ‰ç­‰å¾…æŒ‡ä»¤ï¼‰ï¼Œæ‰€ä»¥è¦æŠŠæ‰€æœ‰ç‰‡æ®µæ‹¼æˆä¸€å¥è¯
+                string logContent = "";
+                if (line.dialogueData != null && line.dialogueData.segments != null)
+                {
+                    foreach (var segment in line.dialogueData.segments)
+                    {
+                        logContent += segment.dialogue;
+                    }
+                }
+
+                // 3. å‘é€ç»™å›é¡¾ç³»ç»Ÿ
+                if (!string.IsNullOrEmpty(logContent))
+                {
+                    ReviewManager.Instance.AddDialogue(logName, logContent);
+                }
+            }
+            // ============================================================
+
             // Build dialogue
             yield return BuildLineSegments(line.dialogueData);
         }
@@ -210,10 +237,10 @@ namespace DIALOGUE
                     }
                     else
                     {
-                        Debug.Log("Í¬Ò»Ö¡ÄÚÖØ¸´µã»÷£¬ÒÑºöÂÔ");
+                        Debug.Log("Í¬Ò»Ö¡ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñºï¿½ï¿½ï¿½");
                     }
 
-                    userPrompt = false; // Ïû·ÑÊÂ¼ş
+                    userPrompt = false; // ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
                 }
 
                 yield return null;
@@ -225,7 +252,7 @@ namespace DIALOGUE
         //IEnumerator BuildDialogue(string dialogue, bool append = false)
         //{
         //    architect.Stop();
-        //    isAccelerating = false; // ÖØÖÃ¼ÓËÙ×´Ì¬
+        //    isAccelerating = false; // ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½×´Ì¬
 
         //    if (!append)
         //        architect.Build(dialogue);
@@ -238,25 +265,25 @@ namespace DIALOGUE
         //        {
         //            if (!isAccelerating)
         //            {
-        //                // Ê×´Îµã»÷£ºÆô¶¯¼ÓËÙ
+        //                // ï¿½×´Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         //                architect.hurryUp = true;
         //                isAccelerating = true;
-        //                Debug.Log("Æô¶¯¼ÓËÙ");
+        //                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         //            }
         //            else
         //            {
-        //                // µÚ¶ş´Îµã»÷£ºÇ¿ÖÆÍê³É²¢ÍË³ö
+        //                // ï¿½Ú¶ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½É²ï¿½ï¿½Ë³ï¿½
         //                architect.ForceComplete();
-        //                Debug.Log("Ç¿ÖÆÍê³É");
+        //                Debug.Log("Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½");
         //            }
 
-        //            userPrompt = false; // Ïû·ÑÊÂ¼ş
-        //            yield return null;  // È·±£µ±Ç°Ö¡´¦ÀíÍê³É
+        //            userPrompt = false; // ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+        //            yield return null;  // È·ï¿½ï¿½ï¿½ï¿½Ç°Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         //        }
         //        yield return null;
         //    }
 
-        //    // È·±£×îÖÕ×´Ì¬ÕıÈ·
+        //    // È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½È·
         //    isAccelerating = false;
         //    yield return null;
         //}
