@@ -6,6 +6,13 @@ public class TaskCheck : MonoBehaviour
 {
     void Start()
     {
-        TaskManager.Instance.CheckTaskProgress();
+        if (TaskManager.Instance != null)
+        {
+            TaskManager.Instance.CheckTaskProgress();
+        }
+        else
+        {
+            Debug.LogWarning("TaskManager instance not found, skipping task progress check");
+        }
     }
 }

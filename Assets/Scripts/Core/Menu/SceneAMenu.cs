@@ -28,16 +28,54 @@ public class SceneAMenu : MonoBehaviour
 
     public void TurnToMainMenu()
     {
+        if (SceneLoaderManager.Instance == null)
+        {
+            Debug.LogWarning("SceneLoaderManager instance not found, skipping scene transition");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(transationStyle))
+        {
+            Debug.LogWarning("Transition style not set, skipping scene transition");
+            return;
+        }
+
         SceneLoaderManager.Instance.TransitionToScene(transationStyle, 0);
 
-        ArchivingManager.Instance.Save();
+        if (ArchivingManager.Instance != null)
+        {
+            ArchivingManager.Instance.Save();
+        }
+        else
+        {
+            Debug.LogWarning("ArchivingManager instance not found, skipping save");
+        }
     }
 
     public void TurnToMountain()
     {
+        if (SceneLoaderManager.Instance == null)
+        {
+            Debug.LogWarning("SceneLoaderManager instance not found, skipping scene transition");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(transationStyle))
+        {
+            Debug.LogWarning("Transition style not set, skipping scene transition");
+            return;
+        }
+
         SceneLoaderManager.Instance.TransitionToScene(transationStyle, 2);
 
-        ArchivingManager.Instance.Save();
+        if (ArchivingManager.Instance != null)
+        {
+            ArchivingManager.Instance.Save();
+        }
+        else
+        {
+            Debug.LogWarning("ArchivingManager instance not found, skipping save");
+        }
     }
 
     public void CloseMountain()
