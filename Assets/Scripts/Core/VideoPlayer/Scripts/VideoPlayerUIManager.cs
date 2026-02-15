@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class VideoPlayerUIManager : MonoBehaviour
 {
     [SerializeField] private CanvasGroup rootCanvasGroup;
     [SerializeField] private RawImage videoDisplay;

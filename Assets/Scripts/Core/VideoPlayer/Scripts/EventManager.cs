@@ -14,7 +14,7 @@ public class EventManager : MonoBehaviour
 
     [Header("Reference")]
     [SerializeField] private InputManager input;
-    [SerializeField] private UIManager uiManager;
+    [SerializeField] private VideoPlayerUIManager uiManager;
     [SerializeField] private VideoPlayerController videoPlayer;
 
     private float skipPressTime;
