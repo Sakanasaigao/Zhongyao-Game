@@ -7313,7 +7313,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -37, y: -16}
+  m_AnchoredPosition: {x: -60, y: -54.309}
   m_SizeDelta: {x: 105.2662, y: 65.1264}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &910114743
@@ -7638,7 +7638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000039099, y: -53.647}
+  m_AnchoredPosition: {x: -0.0000085847, y: -59.11}
   m_SizeDelta: {x: 800, y: 492.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1137596804
@@ -7710,6 +7710,11 @@ MonoBehaviour:
   - levelId: 4
     chapterName: "\u7B2C\u56DB\u7AE0"
     levelName: "\u6566\u714C\u98DE\u5929"
+    coverImage: {fileID: 0}
+    isLocked: 1
+  - levelId: 5
+    chapterName: "\u7EC8  \u7AE0"
+    levelName: "\u7D2B\u7981\u4E4B\u5DC5"
     coverImage: {fileID: 0}
     isLocked: 1
   - levelId: 5
@@ -7845,8 +7850,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 22.220215, y: 0}
+  m_SizeDelta: {x: 44.4404, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1224552450
 GameObject:
@@ -8234,8 +8239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2.1105042, y: 0}
+  m_SizeDelta: {x: 27.91, y: 30.6031}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374539463
 MonoBehaviour:
@@ -8257,7 +8262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 023653d77731c7346902904553804d96, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 153ef1d1d880cda4bb01b0a0646e9f44, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
