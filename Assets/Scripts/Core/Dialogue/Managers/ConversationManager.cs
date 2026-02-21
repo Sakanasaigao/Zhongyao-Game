@@ -76,19 +76,12 @@ namespace DIALOGUE
             if (line.hasSpeaker)
                 HandleSpeakerLogic(line.speakerData);
 
-            // _LogDialogue(line);
             PassedDialogueLineManager.instance.AddLineToPassedLines(line);
 
-            // ============================================================
-            // 【核心植入点】: 只要这里一跑，ReviewManager 就记下来
-            // ============================================================
             if (ReviewManager.Instance != null)
             {
-                // 1. 获取名字（如果没有名字，就叫"旁白"或者空字符串）
-                string logName = line.hasSpeaker ? line.speakerData.displayname : ""; // 或者 "旁白"
+                string logName = line.hasSpeaker ? line.speakerData.displayname : "";
 
-                // 2. 拼接内容
-                // 因为你的对话系统支持分段（比如中间有等待指令），所以要把所有片段拼成一句话
                 string logContent = "";
                 if (line.dialogueData != null && line.dialogueData.segments != null)
                 {
@@ -98,15 +91,11 @@ namespace DIALOGUE
                     }
                 }
 
-                // 3. 发送给回顾系统
                 if (!string.IsNullOrEmpty(logContent))
                 {
                     ReviewManager.Instance.AddDialogue(logName, logContent);
                 }
             }
-            // ============================================================
-
-            // Build dialogue
             yield return BuildLineSegments(line.dialogueData);
         }
 

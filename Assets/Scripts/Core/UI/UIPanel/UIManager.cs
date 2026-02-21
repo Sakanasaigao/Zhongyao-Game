@@ -49,11 +49,13 @@ public class UIManager : MonoBehaviour
 
     public T OpenPanel<T>(object param = null) where T : UIPanel
     {
+        Debug.Log("UIManager OpenPanel");
         string panelName = typeof(T).Name;
+        Debug.Log(panelName);
 
         if (!panelCache.TryGetValue(panelName, out UIPanel panel))
         {
-            T prefab = Resources.Load<T>($"UI/Panels/{panelName}");
+            T prefab = Resources.Load<T>($"Prefabs/UI/Panels/{panelName}");
             if (prefab != null)
             {
                 panel = Instantiate(prefab, panelParent);

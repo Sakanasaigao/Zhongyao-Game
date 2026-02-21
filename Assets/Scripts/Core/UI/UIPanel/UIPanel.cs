@@ -32,7 +32,7 @@ public abstract class UIPanel : MonoBehaviour
         if (contentTransform == null)
             contentTransform = transform;
 
-        originalSortOrder = GetComponent<Canvas>()?.sortingOrder ?? 0;
+        // originalSortOrder = GetComponent<Canvas>()?.sortingOrder ?? 0;
 
         if (!isOpen)
         {
