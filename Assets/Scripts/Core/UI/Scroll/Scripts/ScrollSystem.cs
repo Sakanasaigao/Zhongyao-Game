@@ -22,7 +22,6 @@ public class ScrollSystem : UIPanel
 
     public override void Open(object param = null)
     {
-        Debug.Log("Opening Scroll");
         if (param is List<DIALOGUE_LINE> lines)
         {
             InitializeContainItems(lines);
@@ -61,7 +60,6 @@ public class ScrollSystem : UIPanel
         }
         activeItems.Clear();
 
-        Debug.Log($"container child count{container.childCount}");
         for (int i = container.childCount - 1; i >= 0; i--)
         {
             Transform child = container.GetChild(i);

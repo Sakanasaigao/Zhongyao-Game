@@ -44,7 +44,7 @@ Material:
     - _EdgeSoftness: 0.02
     - _EnableExternalAlpha: 0
     - _GlowWidth: 0.01
-    - _Progress: 1.3336267
+    - _Progress: 0
     - _Scale: 0.236
     - _Show: 1
     - _Smoothness: 0.05

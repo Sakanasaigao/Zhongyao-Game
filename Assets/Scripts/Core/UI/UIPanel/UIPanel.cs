@@ -85,7 +85,8 @@ public abstract class UIPanel : MonoBehaviour
             if (destroy)
                 Destroy(gameObject);
             else
-                gameObject.SetActive(false);
+                Debug.Log("UI Closed without destroying"); ;
+                //gameObject.SetActive(false);
         });
     }
 
@@ -109,7 +110,7 @@ public abstract class UIPanel : MonoBehaviour
             canvasGroup.blocksRaycasts = true;
         }
 
-        if (useScaleAnimation)
+        if (useScaleAnimation && contentTransform != null)
         {
             contentTransform.localScale = Vector3.one * 0.8f;
             sequence.Join(contentTransform.DOScale(1, scaleDuration).SetEase(openEase));

@@ -562,7 +562,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7942084535518189732
 GameObject:
@@ -720,7 +720,7 @@ MonoBehaviour:
   useScaleAnimation: 1
   useFadeAnimation: 1
   pauseGameWhenOpen: 0
-  blockRaycastsWhenClosed: 1
+  blockRaycastsWhenClosed: 0
   container: {fileID: 7345246617236109677}
   containItemPrefab: {fileID: 7798179407760261030, guid: bfb060d4e1aa150408d8f84d1a0591fc, type: 3}
 --- !u!225 &66225177880986378

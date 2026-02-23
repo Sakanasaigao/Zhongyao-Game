@@ -8,6 +8,5 @@ public class ScrollManager : MonoBehaviour
     public void OpenScroll()
     {
         UIManager.Instance.OpenPanel<ScrollSystem>();
-        Debug.Log("Manager Opening");
     }
 }

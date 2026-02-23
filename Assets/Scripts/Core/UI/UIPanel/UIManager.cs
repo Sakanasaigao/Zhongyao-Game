@@ -49,9 +49,7 @@ public class UIManager : MonoBehaviour
 
     public T OpenPanel<T>(object param = null) where T : UIPanel
     {
-        Debug.Log("UIManager OpenPanel");
         string panelName = typeof(T).Name;
-        Debug.Log(panelName);
 
         if (!panelCache.TryGetValue(panelName, out UIPanel panel))
         {
@@ -70,6 +68,24 @@ public class UIManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public static void _LogDictionary<TKey, TValue>(Dictionary<TKey, TValue> dict)
+    {
+        if (dict == null || dict.Count == 0)
+        {
+            return;
+        }
+
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        sb.AppendLine($"Dictionary Count: {dict.Count}");
+
+        foreach (var pair in dict)
+        {
+            sb.AppendLine($"[{pair.Key}] = {pair.Value}");
+        }
+
+        Debug.Log(sb.ToString());
     }
 
     public void ClosePanel<T>() where T : UIPanel
