@@ -12,7 +12,7 @@ namespace DIALOGUE
         public DialogueSystemConfigurationSO config =>_config;
 
         public DialogueContainer dialogueContainer = new DialogueContainer();
-        private ConversationManager conversationManager;
+        public ConversationManager conversationManager;
         private TextArchitect architect;
 
         public const string narratorName = "narrator";

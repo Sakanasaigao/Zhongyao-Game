@@ -1,10 +1,13 @@
-using UnityEngine;
+using UnityEngine; // <--- 之前就是缺了这一行！
 
 [System.Serializable]
 public class LevelData {
-    public int levelId;         // ID
-    public string chapterName;  // 【新增】对应“次序”，比如写 "第一章"
-    public string levelName;    // 对应“关卡名”，比如写 "桃源问津"
-    public Sprite coverImage;   // 插画
-    public bool isLocked;       // 是否锁定
+    public int levelId;         
+    public string chapterName;  
+    public string levelName;    
+    public Sprite coverImage;   
+    public bool isLocked;       
+
+
+    public string scriptFileName; 
 }
