@@ -12,7 +12,7 @@ namespace DIALOGUE
         public DialogueSystemConfigurationSO config =>_config;
 
         public DialogueContainer dialogueContainer = new DialogueContainer();
-        private ConversationManager conversationManager;
+        public ConversationManager conversationManager;
         private TextArchitect architect;
 
         public const string narratorName = "narrator";
@@ -43,7 +43,7 @@ namespace DIALOGUE
             architect = new TextArchitect(dialogueContainer.dialogueText);
             conversationManager = new ConversationManager(architect);
             string keyName = GetLocalizedKeyName(_config.skipKey);
-            dialogueContainer.skipTipText.text = $"按{keyName}跳过";
+            dialogueContainer.skipTipText.text = $"长按{keyName}跳过";
         }
 
         private string GetLocalizedKeyName(KeyCode skipKey)

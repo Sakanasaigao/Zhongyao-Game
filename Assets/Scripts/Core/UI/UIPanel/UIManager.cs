@@ -50,10 +50,11 @@ public class UIManager : MonoBehaviour
     public T OpenPanel<T>(object param = null) where T : UIPanel
     {
         string panelName = typeof(T).Name;
+        Debug.Log($"Try open {panelName}");
 
         if (!panelCache.TryGetValue(panelName, out UIPanel panel))
         {
-            T prefab = Resources.Load<T>($"UI/Panels/{panelName}");
+            T prefab = Resources.Load<T>($"Prefabs/UI/Panels/{panelName}");
             if (prefab != null)
             {
                 panel = Instantiate(prefab, panelParent);
@@ -68,6 +69,24 @@ public class UIManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public static void _LogDictionary<TKey, TValue>(Dictionary<TKey, TValue> dict)
+    {
+        if (dict == null || dict.Count == 0)
+        {
+            return;
+        }
+
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        sb.AppendLine($"Dictionary Count: {dict.Count}");
+
+        foreach (var pair in dict)
+        {
+            sb.AppendLine($"[{pair.Key}] = {pair.Value}");
+        }
+
+        Debug.Log(sb.ToString());
     }
 
     public void ClosePanel<T>() where T : UIPanel
