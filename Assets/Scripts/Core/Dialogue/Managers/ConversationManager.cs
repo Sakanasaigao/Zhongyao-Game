@@ -48,14 +48,13 @@ namespace DIALOGUE
             {
                 if (string.IsNullOrWhiteSpace(conversation[i])) continue;
 
-                // 1. 解析当前行
                 DIALOGUE_LINE line = DialogueParser.Parse(conversation[i]);
 
-                // 2. 运行对话逻辑
+                // Open dialogueData
                 if (line.hasDialogue)
                     yield return Line_RunDialogue(line);
 
-                // 3. 运行指令逻辑（如切换背景、立绘效果）
+                // Run any commandData
                 if (line.hasCommand)
                     yield return Line_RunCommands(line);
 
@@ -78,10 +77,8 @@ namespace DIALOGUE
             if (line.hasSpeaker)
                 HandleSpeakerLogic(line.speakerData);
 
-            // 记录已读行
             PassedDialogueLineManager.instance.AddLineToPassedLines(line);
 
-            // 【回顾系统对接】：记录到回顾日志
             if (ReviewManager.Instance != null)
             {
                 string logName = line.hasSpeaker ? line.speakerData.displayname : "旁白";
@@ -95,7 +92,6 @@ namespace DIALOGUE
                 if (!string.IsNullOrEmpty(logContent))
                     ReviewManager.Instance.AddDialogue(logName, logContent);
             }
-
             yield return BuildLineSegments(line.dialogueData);
         }
 
