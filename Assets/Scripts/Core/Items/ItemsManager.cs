@@ -13,7 +13,6 @@ namespace ITEMS
     {
         [SerializeField] private ItemConfigSO config;
         [SerializeField] private Transform _itemPanel = null;
-        [SerializeField] private ItemWarehouse warehouse = null;
         public Transform itemPanel => _itemPanel;
 
         public static ItemsManager instance { get; private set; }
@@ -95,7 +94,7 @@ namespace ITEMS
 
             if (info.config.name != "")
             {
-                warehouse.AddItem(name);
+                ItemWarehouse.Instance.AddItem(name);
                 Debug.Log($"Added {name} to the warehouse");
             }
             else

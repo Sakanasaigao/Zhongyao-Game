@@ -14,7 +14,6 @@ namespace DIALOGUE
         private TextArchitect architect = null;
         private bool userPrompt = false;
 
-        // 【总监级新增】：剧本播完后的信号灯，用于通知云朵散开
         public System.Action onConversationEnd;
 
         public ConversationManager(TextArchitect architect)
@@ -58,7 +57,6 @@ namespace DIALOGUE
                 if (line.hasCommand)
                     yield return Line_RunCommands(line);
 
-                // 4. 等待玩家点击继续
                 if (line.hasDialogue)
                 {
                     yield return WaitForUserInput();
@@ -66,10 +64,8 @@ namespace DIALOGUE
                 }
             }
 
-            // 【核心补全】：剧本全部播完，熄灯下班，触发云朵散开信号
             process = null;
             onConversationEnd?.Invoke();
-            Debug.Log("🎭 报告总监：本场演出已圆满结束！");
         }
 
         IEnumerator Line_RunDialogue(DIALOGUE_LINE line)
@@ -97,7 +93,6 @@ namespace DIALOGUE
             yield return BuildLineSegments(line.dialogueData);
         }
 
-        // --- 剩下的逻辑保持原样，确保兼容性 ---
         private void HandleSpeakerLogic(DL_SPEAKER_DATA speakerData)
         {
             Character character = CharacterManager.instance.GetCharacter(speakerData.name, createIfDoesNotExist: false);

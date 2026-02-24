@@ -1,16 +1,3 @@
-/*
- * 中药游戏项目 - ItemWarehouse.cs
- * 
- * 项目概述：
- * 这是一个基于Unity开发的中药主题游戏，融合了视觉小说(GAL)元素，
- * 具有完整的游戏机制和数据管理系统，包含任务、物品、对话等完整的RPG游戏要素。
- * 
- * 模块功能：
- * - 物品仓库管理类，采用单例模式
- * - 负责管理玩家拥有的所有物品
- * - 提供添加、移除、检查和获取物品的方法
- * - 支持默认物品初始化和随机获取物品功能
- */
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +24,7 @@ namespace ITEMS
             else
             {
                 _instance = this;
+                DontDestroyOnLoad(gameObject);
             }
         }
 
@@ -46,6 +34,7 @@ namespace ITEMS
             {
                 _obtainedItems.Add(itemName);
                 OnItemAdded?.Invoke(itemName);
+                Debug.Log($"ItemWH add item {itemName} list: {_obtainedItems}");
                 return true;
             }
             return false;
@@ -79,6 +68,18 @@ namespace ITEMS
         public List<string> GetAllItems()
         {
             return new List<string>(_obtainedItems);
+        }
+
+        public void _test_LogAllItems()
+        {
+            foreach (var item in _obtainedItems)
+            {
+                Debug.Log($"IWH has {item}");
+            }
+            if (_obtainedItems.Count == 0)
+            {
+                Debug.Log("IWH is empty");
+            }
         }
 
         public void ClearWarehouse()
