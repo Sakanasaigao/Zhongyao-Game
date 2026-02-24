@@ -641,6 +641,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &61692393 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1980766033793333337, guid: 2b7bd1a8e3f9c664286ba90d99174a85, type: 3}
+  m_PrefabInstance: {fileID: 482768456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &90868602
 GameObject:
   m_ObjectHideFlags: 0
@@ -7733,6 +7738,8 @@ MonoBehaviour:
     scriptFileName: 
   itemPrefab: {fileID: 32755295355322919, guid: 901ce8fabd95d9448af02f76e96b52c3, type: 3}
   itemParent: {fileID: 51474441}
+  selectPanel: {fileID: 1374539461}
+  mainUIRoot: {fileID: 278271761}
   itemSpace: 300
   scaleRange: 200
   snapSpeed: 8
@@ -8919,9 +8926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5564644034d2af745b2efa8381899645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 482768457}
+  animator: {fileID: 61692393}
   cloudAnimator: {fileID: 482768457}
   coverTime: 1
+  openTime: 1
 --- !u!1001 &1676289141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10804,7 +10812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &4055271399953268580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11242,7 +11250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8243990280837560023
 RectTransform:
   m_ObjectHideFlags: 0

@@ -12,6 +12,10 @@ public class SelectHorizontalScroll : MonoBehaviour {
     public SelectHorizontalScrollItem itemPrefab; 
     public Transform itemParent;            
 
+    [Header("【界面软跳转引用 (在此处赋值)】")]
+    public GameObject selectPanel; 
+    public GameObject mainUIRoot;  
+
     [Header("【参数调整】")]
     public float itemSpace = 400f;          
     public float scaleRange = 300f;         
@@ -52,7 +56,6 @@ public class SelectHorizontalScroll : MonoBehaviour {
         }
     }
 
-    // --- 核心：处理卡片点击 ---
     public void OnItemClicked(SelectHorizontalScrollItem item) {
         if (_isDragging) return; 
 
@@ -60,7 +63,6 @@ public class SelectHorizontalScroll : MonoBehaviour {
         bool isCenter = dist < (itemSpace / 2);
 
         if (isCenter) {
-            // -- 如果点的是中间的 --
             if (item.data.isLocked) {
                 Debug.Log("🔒 拒绝：关卡锁定");
             } else {
@@ -70,58 +72,38 @@ public class SelectHorizontalScroll : MonoBehaviour {
                 if (StoryTransition.Instance != null) {
                     StoryTransition.Instance.Play(() => {
                         
-                        // 1. 读取剧本文件
+                        // 1. 暗中切换 UI 场景
+                        if (selectPanel != null) selectPanel.SetActive(false);
+                        if (mainUIRoot != null) mainUIRoot.SetActive(true);
+
+                        // 2. 读取剧本文件
                         TextAsset scriptAsset = Resources.Load<TextAsset>("GameScripts/" + fileName);
 
                         if (scriptAsset != null) {
                             string[] lines = scriptAsset.text.Split(new[] { "\n", "\r" }, System.StringSplitOptions.RemoveEmptyEntries);
                             List<string> conversation = new List<string>(lines);
 
-                            // ==========================================
-                            // 🟢 【总监智能补丁：自动侦测对话系统】
-                            // ==========================================
-                            
-                            // 尝试方案 A：直接找单例
-                            DialogueSystem ds = DialogueSystem.instance;
-
-                            // 尝试方案 B：如果单例没连上，就用雷达去场景里搜 (防止误报)
-                            if (ds == null) {
-                                ds = FindObjectOfType<DialogueSystem>();
-                            }
-
-                            if (ds != null && ds.conversationManager != null) {
-                                // 2. 注册回调：播完后云朵散开
-                                ds.conversationManager.onConversationEnd = () => {
-                                    if (StoryTransition.Instance != null && StoryTransition.Instance.animator != null) {
-                                        StoryTransition.Instance.animator.SetTrigger("End");
-                                    }
-                                };
-
-                                // 3. 启动对话
-                                ds.conversationManager.StartConversation(conversation);
+                            // 3. 严格遵循总监架构：仅通过单例调用，绝不擅自寻找兜底
+                            if (DialogueSystem.instance != null && DialogueSystem.instance.conversationManager != null) {
+                                DialogueSystem.instance.conversationManager.StartConversation(conversation);
                                 Debug.Log("✅ 剧本启动成功！");
-                            } 
-                            else {
-                                // 如果实在找不到，不仅不报错，还告诉您去哪找
-                                Debug.LogError("❌ 警报：场景中未找到 [DialogueSystem] 或其未初始化！\n" +
-                                               "请检查 Hierarchy 中的 'Managers' 或 'SystemCanvas' 是否挂载了 DialogueSystem 脚本。");
-                                
-                                // 备用方案：既然对话播不了，至少把云散开，别让游戏卡死在云里
-                                StoryTransition.Instance.animator.SetTrigger("End");
-                            }
 
+                                DialogueSystem.instance.conversationManager.onConversationEnd = () => {
+                                    Debug.Log("🏁 剧本播放完毕。");
+                                };
+                            } else {
+                                // 忠实汇报错误，将控制权交还给您来排查
+                                Debug.LogError("❌ 警报：DialogueSystem.instance 为空！");
+                            }
                         } else {
                             Debug.LogError($"❌ 找不到剧本文件：Resources/GameScripts/{fileName}");
-                            StoryTransition.Instance.animator.SetTrigger("End"); // 没剧本也散开云
                         }
-
                     });
                 } else {
                     Debug.LogError("⚠️ 场景里没找到 StoryTransition 脚本！");
                 }
             }
         } else {
-            // -- 吸附逻辑 --
             _targetScrollX = -item.indexInList * itemSpace;
         }
     }

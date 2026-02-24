@@ -5,7 +5,8 @@ using UnityEngine;
 public class StoryTransition : MonoBehaviour
 {
     public static StoryTransition Instance { get; private set; }
-    public Animator animator;
+    
+    // 【恢复原状】绝不再碰 CrossFade，只专注您的云朵
     [Header("把云朵的 Animator 拖进来")]
     public Animator cloudAnimator;
     
@@ -14,7 +15,7 @@ public class StoryTransition : MonoBehaviour
 
     private void Awake()
     {
-        // 单例模式，方便从任何地方调用
+        // 您的原版单例逻辑，原封不动
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -23,10 +24,6 @@ public class StoryTransition : MonoBehaviour
         Instance = this;
     }
 
-    /// <summary>
-    /// 执行剧情切换：云合拢 -> 执行逻辑 -> 云散开
-    /// </summary>
-    /// <param name="actionDuringCover">云遮住时要执行的代码（比如加载文字）</param>
     public void Play(Action actionDuringCover)
     {
         StartCoroutine(ProcessTransition(actionDuringCover));
@@ -34,28 +31,43 @@ public class StoryTransition : MonoBehaviour
 
     IEnumerator ProcessTransition(Action actionDuringCover)
     {
-        // 1. 播放合拢动画 (复用原来的 Trigger)
+        // 1. 【借鉴 SceneLoad 的安全触发逻辑】
+        // 如果云朵被您禁用了，我们需要唤醒它才能播动画
+        if (cloudAnimator != null && !cloudAnimator.gameObject.activeSelf)
+        {
+            cloudAnimator.gameObject.SetActive(true);
+            // 核心修复：刚唤醒的 Animator 内部状态机需要一帧来就位
+            // 不加这行，Trigger 会被吞掉，导致直接闪现“合拢”然后消失
+            yield return null; 
+        }
+
+        // 2. 播放合拢动画 (您原版的 Trigger 名字)
         if (cloudAnimator != null)
         {
             cloudAnimator.SetTrigger("Start");
         }
 
-        // 2. 等待云朵完全遮住屏幕
+        // 3. 等待云朵完全遮住屏幕
         yield return new WaitForSeconds(coverTime);
 
-        // 3. 【核心】执行你传入的“加载剧情”代码
+        // 4. 【核心】执行您的软跳转逻辑（UI切换、推剧本）
         Debug.Log("☁️ 云雾已遮蔽，正在偷偷切换剧情...");
         actionDuringCover?.Invoke();
 
-        // 4. 稍微停顿一下（防闪烁）
+        // 5. 稍微停顿一下（防闪烁，您原版代码的精髓）
         yield return new WaitForSeconds(0.5f);
 
-        // 5. 播放散开动画
-        // 【注意】：我们需要在 Animator 里加一个叫 "End" 的 Trigger 让云散开
-        // 如果你的动画是自动循环的，这步可能不需要，但在同场景切换中通常需要手动散开
+        // 6. 播放散开动画
         if (cloudAnimator != null)
         {
             cloudAnimator.SetTrigger("End"); 
+        }
+
+        // 7. 【善后清理】等云朵散开后，再次将其禁用，不浪费一丁点性能
+        yield return new WaitForSeconds(coverTime);
+        if (cloudAnimator != null)
+        {
+            cloudAnimator.gameObject.SetActive(false);
         }
     }
 }
