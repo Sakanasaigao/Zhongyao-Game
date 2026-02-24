@@ -90,6 +90,7 @@ namespace DIALOGUE
                 }
 
                 if (!string.IsNullOrEmpty(logContent))
+                {
                     ReviewManager.Instance.AddDialogue(logName, logContent);
                 }
             }
