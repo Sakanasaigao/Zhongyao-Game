@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using DIALOGUE; // 引入对话系统命名空间
+using CHARACTERS;
 
 public class SelectHorizontalScroll : MonoBehaviour {
 
@@ -35,12 +36,19 @@ public class SelectHorizontalScroll : MonoBehaviour {
 
     void LoadSaveData() {
         for (int i = 0; i < levelDatas.Length; i++) {
+            int currentLevelId = i + 1; 
+
+            // 第一关永远解锁
             if (i == 0) {
                 levelDatas[i].isLocked = false;
                 continue;
             }
-            if (PlayerPrefs.GetInt("Level_" + i + "_Unlocked", 0) == 1) {
+            
+            // 严格对齐硬盘存档与内存状态
+            if (PlayerPrefs.GetInt("Level_" + currentLevelId + "_Unlocked", 0) == 1) {
                 levelDatas[i].isLocked = false;
+            } else {
+                levelDatas[i].isLocked = true; // 增加防错机制，确保锁定
             }
         }
     }
@@ -56,6 +64,13 @@ public class SelectHorizontalScroll : MonoBehaviour {
         }
     }
 
+    public void RefreshAllLocksUI() {
+        for (int i = 0; i < _spawnedItems.Count; i++) {
+            var item = _spawnedItems[i];
+            item.SetInfo(levelDatas[item.indexInList], item.indexInList, this);
+        }
+    }
+
     public void OnItemClicked(SelectHorizontalScrollItem item) {
         if (_isDragging) return; 
 
@@ -66,33 +81,51 @@ public class SelectHorizontalScroll : MonoBehaviour {
             if (item.data.isLocked) {
                 Debug.Log("🔒 拒绝：关卡锁定");
             } else {
-                string fileName = (item.indexInList + 1).ToString() + "1";
+                // 🔥 核心重构 1：提前提取当前关卡索引，切断闭包陷阱，保护跳转逻辑不卡死！
+                int currentIndex = item.indexInList; 
+                string fileName = (currentIndex + 1).ToString() + "1";
                 Debug.Log("🚀 准备进入剧本: " + fileName);
 
                 if (StoryTransition.Instance != null) {
                     StoryTransition.Instance.Play(() => {
+                     
+                        // 🔥 核心重构 2：【保证章节独立】强制销毁上一个章节的所有幽灵角色！
+                        if (CharacterManager.instance != null) {
+                            CharacterManager.instance.ClearAllCharacters();
+                        }
                         
-                        // 1. 暗中切换 UI 场景
                         if (selectPanel != null) selectPanel.SetActive(false);
                         if (mainUIRoot != null) mainUIRoot.SetActive(true);
 
-                        // 2. 读取剧本文件
                         TextAsset scriptAsset = Resources.Load<TextAsset>("GameScripts/" + fileName);
 
                         if (scriptAsset != null) {
                             string[] lines = scriptAsset.text.Split(new[] { "\n", "\r" }, System.StringSplitOptions.RemoveEmptyEntries);
                             List<string> conversation = new List<string>(lines);
 
-                            // 3. 严格遵循总监架构：仅通过单例调用，绝不擅自寻找兜底
                             if (DialogueSystem.instance != null && DialogueSystem.instance.conversationManager != null) {
                                 DialogueSystem.instance.conversationManager.StartConversation(conversation);
                                 Debug.Log("✅ 剧本启动成功！");
 
+                                // 🔥 核心重构 3：【恢复逐步解锁】安全发放钥匙
                                 DialogueSystem.instance.conversationManager.onConversationEnd = () => {
-                                    Debug.Log("🏁 剧本播放完毕。");
+                                    Debug.Log("🏁 剧本播放完毕，开始结算进度...");
+                                    
+                                    int nextIndex = currentIndex + 1;
+                                    
+                                    // 确保没有打到最后一关越界
+                                    if (nextIndex < levelDatas.Length) {
+                                        int nextLevelId = nextIndex + 1;
+                                        
+                                        levelDatas[nextIndex].isLocked = false;
+                                        PlayerPrefs.SetInt("Level_" + nextLevelId + "_Unlocked", 1);
+                                        PlayerPrefs.Save();
+                                        RefreshAllLocksUI();
+                                        
+                                        Debug.Log($"🔓 逐步解锁成功：下一关 ID {nextLevelId} 已开启！");
+                                    }
                                 };
                             } else {
-                                // 忠实汇报错误，将控制权交还给您来排查
                                 Debug.LogError("❌ 警报：DialogueSystem.instance 为空！");
                             }
                         } else {

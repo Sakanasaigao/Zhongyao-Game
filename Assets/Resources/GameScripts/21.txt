@@ -10,7 +10,7 @@ MoveCharacter(壮士 -x 1)
 FaceRight(你)
 FaceRight(老药师)
 
-narrator "清明时节，细雨如丝，药堂的门槛被雨水沾湿。"
+narrator "小满节气。阳气充盈，枢机调整，细雨如丝，药堂的门槛被雨水沾湿。"
 narrator "一名虬髯大汉裹着腥膻的羊皮袄，踉跄踏入药堂，旧伤处泛着青色，如同墨梅绽放在肌肤上。"
 Show(壮士)
 

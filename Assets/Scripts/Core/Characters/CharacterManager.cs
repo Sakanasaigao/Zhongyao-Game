@@ -162,5 +162,25 @@ namespace CHARACTERS
             public ItemConfigData config = null;
             public GameObject prefab = null;
         }
+
+        /// <summary>
+        /// 软跳转专用：清空当前屏幕上的所有角色，防止跨章节幽灵残留
+        /// </summary>
+        public void ClearAllCharacters()
+        {
+            // 1. 遍历花名册里所有的角色
+            foreach (Character character in characters.Values)
+            {
+                if (character != null && character.root != null)
+                {
+                    // 物理销毁屏幕上的角色物体 (连根拔起)
+                    Destroy(character.root.gameObject);
+                }
+            }
+            // 2. 彻底清空花名册，斩草除根
+            characters.Clear();
+            
+            Debug.Log("🧹 [CharacterManager] 已清空所有旧章节角色！");
+        }
     }
 }

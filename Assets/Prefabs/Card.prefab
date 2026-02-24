@@ -380,6 +380,14 @@ MonoBehaviour:
   levelNameText: {fileID: 4382042661564065644}
   coverImage: {fileID: 7232057355799890089}
   darkMask: {fileID: 147862413945243622}
+  data:
+    levelId: 0
+    chapterName: 
+    levelName: 
+    coverImage: {fileID: 0}
+    isLocked: 0
+    scriptFileName: 
+  indexInList: 0
 --- !u!1 &6384505035185912963
 GameObject:
   m_ObjectHideFlags: 0
