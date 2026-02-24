@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    [Header("Êó±êÒÆ¶¯Ê±ÏÔÊ¾UI")]
+    [Header("ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½Ê±ï¿½ï¿½Ê¾UI")]
     [SerializeField] float showUIAlpha = 0.7f;
     [SerializeField] float showUITime = 3f;
     [SerializeField] float fadeDuration = 1;
 
-    [Header("Ìø¹ý¼ü°´ÏÂÊ±")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±")]
     [SerializeField] float skipThreshold = 3f;
 
     [Header("Reference")]
