@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
     public T OpenPanel<T>(object param = null) where T : UIPanel
     {
         string panelName = typeof(T).Name;
+        Debug.Log($"Try open {panelName}");
 
         if (!panelCache.TryGetValue(panelName, out UIPanel panel))
         {
