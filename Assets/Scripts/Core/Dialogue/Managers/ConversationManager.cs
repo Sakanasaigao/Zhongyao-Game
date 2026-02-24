@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using CHARACTERS;
-using Unity.IO.Archive;
 using UnityEngine;
 
 namespace DIALOGUE
@@ -14,6 +13,9 @@ namespace DIALOGUE
 
         private TextArchitect architect = null;
         private bool userPrompt = false;
+
+        // 【总监级新增】：剧本播完后的信号灯，用于通知云朵散开
+        public System.Action onConversationEnd;
 
         public ConversationManager(TextArchitect architect)
         {
@@ -30,15 +32,12 @@ namespace DIALOGUE
         {
             StopConversation();
             process = dialogueSystem.StartCoroutine(RunningConversation(conversation));
-
             return process;
         }
 
         public void StopConversation()
         {
-            if (!isRunning)
-                return;
-
+            if (!isRunning) return;
             dialogueSystem.StopCoroutine(process);
             process = null;
         }
@@ -47,8 +46,7 @@ namespace DIALOGUE
         {
             for (int i = 0; i < conversation.Count; i++)
             {
-                if (string.IsNullOrWhiteSpace(conversation[i]))
-                    continue;
+                if (string.IsNullOrWhiteSpace(conversation[i])) continue;
 
                 DIALOGUE_LINE line = DialogueParser.Parse(conversation[i]);
 
@@ -60,19 +58,22 @@ namespace DIALOGUE
                 if (line.hasCommand)
                     yield return Line_RunCommands(line);
 
-                if(line.hasDialogue)
+                // 4. 等待玩家点击继续
+                if (line.hasDialogue)
                 {
                     yield return WaitForUserInput();
-
                     CommandManager.instance.StopAllProcesses();
                 }
-
             }
+
+            // 【核心补全】：剧本全部播完，熄灯下班，触发云朵散开信号
+            process = null;
+            onConversationEnd?.Invoke();
+            Debug.Log("🎭 报告总监：本场演出已圆满结束！");
         }
 
         IEnumerator Line_RunDialogue(DIALOGUE_LINE line)
         {
-            // Open or hide the speaker name if there is one present.
             if (line.hasSpeaker)
                 HandleSpeakerLogic(line.speakerData);
 
@@ -80,36 +81,22 @@ namespace DIALOGUE
 
             if (ReviewManager.Instance != null)
             {
-                string logName = line.hasSpeaker ? line.speakerData.displayname : "";
-
+                string logName = line.hasSpeaker ? line.speakerData.displayname : "旁白";
                 string logContent = "";
                 if (line.dialogueData != null && line.dialogueData.segments != null)
                 {
                     foreach (var segment in line.dialogueData.segments)
-                    {
                         logContent += segment.dialogue;
-                    }
                 }
 
                 if (!string.IsNullOrEmpty(logContent))
-                {
                     ReviewManager.Instance.AddDialogue(logName, logContent);
                 }
             }
             yield return BuildLineSegments(line.dialogueData);
         }
 
-        private void _LogDialogue(DIALOGUE_LINE line)
-        {
-            List<DL_DIALOGUE_DATA.DIALOGUE_SEGMENT> segments = line.dialogueData.segments;
-            DL_SPEAKER_DATA speaker = line.speakerData;
-            Debug.Log(speaker.displayname);
-            foreach (var item in segments)
-            {
-                Debug.Log(item.dialogue);
-            }
-        }
-
+        // --- 剩下的逻辑保持原样，确保兼容性 ---
         private void HandleSpeakerLogic(DL_SPEAKER_DATA speakerData)
         {
             Character character = CharacterManager.instance.GetCharacter(speakerData.name, createIfDoesNotExist: false);
@@ -124,16 +111,12 @@ namespace DIALOGUE
                     character.Show();
             }
 
-            // Add character name to the UI
             dialogueSystem.ShowSpeakerName(speakerData.displayname);
-
-            // Now customize the dialogue for this character - if applicable
             DialogueSystem.instance.ApplySpeakerDataToDialogueContainer(speakerData.name);
 
             if (speakerData.isCastingPosition)
                 character.MoveToPosition(speakerData.castPosition, smooth: true);
 
-            // Cast Expression
             if (speakerData.isCastingExpressions)
             {
                 foreach (var ce in speakerData.CastExpressions)
@@ -171,11 +154,7 @@ namespace DIALOGUE
             {
                 DL_DIALOGUE_DATA.DIALOGUE_SEGMENT segment = line.segments[i];
                 yield return WaitForDialogueSegmentSignalToBeTriggered(segment);
-
-                //Debug.Log(segment.dialogue);
-
                 yield return BuildDialogue(segment.dialogue, segment.appendText);
-
                 yield return null;
             }
         }
@@ -192,96 +171,37 @@ namespace DIALOGUE
                 case DL_DIALOGUE_DATA.DIALOGUE_SEGMENT.StartSignal.WA:
                     yield return new WaitForSeconds(segment.signalDelay);
                     break;
-                default:
-                    break;
             }
         }
 
         IEnumerator BuildDialogue(string dialogue, bool append = false)
         {
             architect.Stop();
-
-            if (!append)
-                architect.Build(dialogue);
-            else
-                architect.Append(dialogue);
+            if (!append) architect.Build(dialogue);
+            else architect.Append(dialogue);
 
             bool isFirstClickProcessed = false;
-
             while (architect.isBuilding)
             {
                 if (userPrompt)
                 {
                     if (!isFirstClickProcessed)
                     {
-                        if (!architect.hurryUp)
-                        {
-                            architect.hurryUp = true;
-                        }
-                        else
-                        {
-                            architect.ForceComplete();
-                        }
+                        if (!architect.hurryUp) architect.hurryUp = true;
+                        else architect.ForceComplete();
                         isFirstClickProcessed = true;
                     }
-                    else
-                    {
-                        Debug.Log("ͬһ֡���ظ�������Ѻ���");
-                    }
-
-                    userPrompt = false; // �����¼�
+                    userPrompt = false;
                 }
-
                 yield return null;
-
                 isFirstClickProcessed = false;
             }
         }
 
-        //IEnumerator BuildDialogue(string dialogue, bool append = false)
-        //{
-        //    architect.Stop();
-        //    isAccelerating = false; // ���ü���״̬
-
-        //    if (!append)
-        //        architect.Build(dialogue);
-        //    else
-        //        architect.Append(dialogue);
-
-        //    while (architect.isBuilding)
-        //    {
-        //        if (userPrompt)
-        //        {
-        //            if (!isAccelerating)
-        //            {
-        //                // �״ε������������
-        //                architect.hurryUp = true;
-        //                isAccelerating = true;
-        //                Debug.Log("��������");
-        //            }
-        //            else
-        //            {
-        //                // �ڶ��ε����ǿ����ɲ��˳�
-        //                architect.ForceComplete();
-        //                Debug.Log("ǿ�����");
-        //            }
-
-        //            userPrompt = false; // �����¼�
-        //            yield return null;  // ȷ����ǰ֡�������
-        //        }
-        //        yield return null;
-        //    }
-
-        //    // ȷ������״̬��ȷ
-        //    isAccelerating = false;
-        //    yield return null;
-        //}
-
         IEnumerator WaitForUserInput()
         {
             userPrompt = false;
-            while (!userPrompt)
-                yield return null;
+            while (!userPrompt) yield return null;
             userPrompt = false;
         }
     }
