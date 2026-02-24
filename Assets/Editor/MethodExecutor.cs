@@ -13,7 +13,7 @@ public class MethodExecutor : MonoBehaviour
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(MethodExecutor))]
-public class MethodExecutorEditor : Editor
+public class MethodExecutorEditor : UnityEditor.Editor
 {
     SerializedProperty targetProp;
     SerializedProperty componentProp;

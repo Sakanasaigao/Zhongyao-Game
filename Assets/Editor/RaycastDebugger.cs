@@ -258,7 +258,7 @@ public class RaycastDebugger : MonoBehaviour
 #if UNITY_EDITOR
 
 [CustomEditor(typeof(RaycastDebugger))]
-public class RaycastDebuggerEditor : Editor
+public class RaycastDebuggerEditor : UnityEditor.Editor
 {
     public override void OnInspectorGUI()
     {

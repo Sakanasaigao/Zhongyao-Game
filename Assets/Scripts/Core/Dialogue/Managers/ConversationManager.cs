@@ -91,7 +91,6 @@ namespace DIALOGUE
 
                 if (!string.IsNullOrEmpty(logContent))
                     ReviewManager.Instance.AddDialogue(logName, logContent);
-                }
             }
             yield return BuildLineSegments(line.dialogueData);
         }

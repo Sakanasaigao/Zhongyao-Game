@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 确保与UIManager在同一命名空间
 public abstract class UIPanel : MonoBehaviour
 {
     [SerializeField] protected CanvasGroup canvasGroup;
