@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core.TimeLine
+namespace Core.TIMELINE
 {
     public class TimeLineManager : MonoBehaviour
     {
@@ -25,9 +25,9 @@ namespace Core.TimeLine
                 
                 foreach (var nodeData in timeLineData.nodes)
                 {
-                    if (nodeData.nodePrefab != null)
+                    if (nodeData.nodeType != null && typeof(Node).IsAssignableFrom(nodeData.nodeType))
                     {
-                        var node = Object.Instantiate(nodeData.nodePrefab);
+                        var node = System.Activator.CreateInstance(nodeData.nodeType) as Node;
                         node.startTime = nodeData.startTime;
                         node.duration = nodeData.duration;
                         nodes.Add(node);

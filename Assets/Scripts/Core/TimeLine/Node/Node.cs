@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.TimeLine
+namespace Core.TIMELINE
 {
     public abstract class Node
     {

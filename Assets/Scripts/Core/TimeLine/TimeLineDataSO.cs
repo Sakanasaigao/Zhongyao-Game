@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core.TimeLine
+namespace Core.TIMELINE
 {
-    [CreateAssetMenu(fileName = "TimeLineData", menuName = "Core/TimeLine/TimeLineData")]
+    [CreateAssetMenu(fileName = "TimeLineData", menuName = "Core/TIMELINE/TimeLineData")]
     public class TimeLineDataSO : ScriptableObject
     {
         public List<NodeData> nodes = new List<NodeData>();
@@ -15,6 +15,6 @@ namespace Core.TimeLine
         public string nodeName;
         public float startTime;
         public float duration;
-        public Node nodePrefab;
+        public System.Type nodeType;
     }
 }
