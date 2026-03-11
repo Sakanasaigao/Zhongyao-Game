@@ -1,17 +1,28 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Core.TimeLine
 {
     public class TimeLineManager : MonoBehaviour
     {
-        public TimeLineDataSO timeLineData;
-        private TimeLine timeLine = new TimeLine();
+        public string timeLineDataFolder = "TimeLineData";
+        private Dictionary<string, TimeLine> timeLines = new Dictionary<string, TimeLine>();
         
-        private void Start()
+        public TimeLine LoadTimeLine(string timeLineName)
         {
+            if (timeLines.ContainsKey(timeLineName))
+            {
+                return timeLines[timeLineName];
+            }
+            
+            string path = $"{timeLineDataFolder}/{timeLineName}";
+            TimeLineDataSO timeLineData = Resources.Load<TimeLineDataSO>(path);
+            
             if (timeLineData != null)
             {
-                var nodes = new System.Collections.Generic.List<Node>();
+                TimeLine timeLine = new TimeLine();
+                var nodes = new List<Node>();
+                
                 foreach (var nodeData in timeLineData.nodes)
                 {
                     if (nodeData.nodePrefab != null)
@@ -22,43 +33,62 @@ namespace Core.TimeLine
                         nodes.Add(node);
                     }
                 }
+                
                 timeLine.Initialize(nodes);
+                timeLines[timeLineName] = timeLine;
+                return timeLine;
             }
+            
+            return null;
+        }
+        
+        public void UnloadTimeLine(string timeLineName)
+        {
+            if (timeLines.TryGetValue(timeLineName, out var timeLine))
+            {
+                timeLine.Stop();
+                timeLines.Remove(timeLineName);
+            }
+        }
+        
+        public TimeLine GetTimeLine(string timeLineName)
+        {
+            timeLines.TryGetValue(timeLineName, out var timeLine);
+            return timeLine;
         }
         
         private void Update()
         {
-            timeLine.Update(Time.deltaTime);
+            foreach (var timeLine in timeLines.Values)
+            {
+                timeLine.Update(Time.deltaTime);
+            }
         }
         
-        public void Play()
+        public void PlayAll()
         {
-            timeLine.Play();
+            foreach (var timeLine in timeLines.Values)
+            {
+                timeLine.Play();
+            }
         }
         
-        public void Pause()
+        public void PauseAll()
         {
-            timeLine.Pause();
+            foreach (var timeLine in timeLines.Values)
+            {
+                timeLine.Pause();
+            }
         }
         
-        public void Stop()
+        public void StopAll()
         {
-            timeLine.Stop();
+            foreach (var timeLine in timeLines.Values)
+            {
+                timeLine.Stop();
+            }
         }
         
-        public void AddNode(Node node)
-        {
-            timeLine.AddNode(node);
-        }
-        
-        public void RemoveNode(Node node)
-        {
-            timeLine.RemoveNode(node);
-        }
-        
-        public float CurrentTime => timeLine.CurrentTime;
-        public bool IsPlaying => timeLine.IsPlaying;
-        public int NodeCount => timeLine.NodeCount;
-        public int ActiveNodeCount => timeLine.ActiveNodeCount;
+        public int TimeLineCount => timeLines.Count;
     }
 }
