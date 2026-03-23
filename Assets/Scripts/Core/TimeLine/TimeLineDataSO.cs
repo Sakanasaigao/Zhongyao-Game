@@ -15,6 +15,6 @@ namespace Core.TIMELINE
         public string nodeName;
         public float startTime;
         public float duration;
-        public System.Type nodeType;
+        public string nodeTypeName;
     }
 }

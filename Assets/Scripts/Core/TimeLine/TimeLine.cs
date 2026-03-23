@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace Core.TIMELINE
 {
-    public class TimeLine
+    public class TimeLine<T> : ITimeLine
     {
         private List<Node> nodes = new List<Node>();
         private float currentTime = 0f;
         private bool isPlaying = false;
         private List<Node> activeNodes = new List<Node>();
+        public T Context { get; set; }
         
         public void Initialize(List<Node> initialNodes)
         {
@@ -17,6 +18,14 @@ namespace Core.TIMELINE
             currentTime = 0f;
             isPlaying = false;
             activeNodes.Clear();
+            
+            foreach (var node in nodes)
+            {
+                if (node is Node<T> typedNode)
+                {
+                    typedNode.Context = Context;
+                }
+            }
         }
         
         public void Play()
@@ -57,6 +66,10 @@ namespace Core.TIMELINE
             var newNodes = nodes.Where(n => n.startTime <= currentTime && !activeNodes.Contains(n)).ToList();
             foreach (var node in newNodes)
             {
+                if (node is Node<T> typedNode)
+                {
+                    typedNode.Context = Context;
+                }
                 node.OnEnter();
                 activeNodes.Add(node);
             }
@@ -78,11 +91,16 @@ namespace Core.TIMELINE
             {
                 node.OnExit();
                 activeNodes.Remove(node);
+                nodes.Remove(node);
             }
         }
         
         public void AddNode(Node node)
         {
+            if (node is Node<T> typedNode)
+            {
+                typedNode.Context = Context;
+            }
             nodes.Add(node);
             nodes = nodes.OrderBy(n => n.startTime).ToList();
         }

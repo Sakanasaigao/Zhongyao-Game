@@ -6,6 +6,8 @@ using UnityEngine;
 using DG.Tweening;
 using System.Linq;
 using ITEMS;
+using Zenject;
+using Core.TIMELINE;
 
 public class HorizontalCardHolder : MonoBehaviour
 {
@@ -22,6 +24,10 @@ public class HorizontalCardHolder : MonoBehaviour
 
     bool isCrossing = false;
     [SerializeField] private bool tweenCardReturn = true;
+
+    [Header("TimeLine")]
+    [Inject] private TimeLineManager timeLineManager;
+    public string moveCardTimeLineName = "MoveCardToPot";
 
     public void Initialize()
     {
@@ -86,6 +92,18 @@ public class HorizontalCardHolder : MonoBehaviour
             else if (card != null)
             {
                 DestroyImmediate(card.gameObject);
+            }
+        }
+    }
+
+    public void MoveSelectedCardToPot()
+    {
+        foreach (var card in cards)
+        {
+            if (card.selected)
+            {
+                var moveCardTimeLine = timeLineManager.LoadTimeLine<Card>(moveCardTimeLineName, card);
+                moveCardTimeLine.Play();
             }
         }
     }

@@ -1,18 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Core.TIMELINE
 {
     public class TimeLineManager : MonoBehaviour
     {
+        [Inject] private DiContainer container;
         public string timeLineDataFolder = "TimeLineData";
-        private Dictionary<string, TimeLine> timeLines = new Dictionary<string, TimeLine>();
+        private Dictionary<string, ITimeLine> timeLines = new Dictionary<string, ITimeLine>();
         
-        public TimeLine LoadTimeLine(string timeLineName)
+        public TimeLine<T> LoadTimeLine<T>(string timeLineName, T context = default)
         {
-            if (timeLines.ContainsKey(timeLineName))
+            string key = $"{timeLineName}_{typeof(T).FullName}";
+            if (timeLines.ContainsKey(key))
             {
-                return timeLines[timeLineName];
+                return (TimeLine<T>)timeLines[key];
             }
             
             string path = $"{timeLineDataFolder}/{timeLineName}";
@@ -20,41 +23,74 @@ namespace Core.TIMELINE
             
             if (timeLineData != null)
             {
-                TimeLine timeLine = new TimeLine();
+                TimeLine<T> timeLine = new TimeLine<T>();
+                timeLine.Context = context;
                 var nodes = new List<Node>();
                 
                 foreach (var nodeData in timeLineData.nodes)
                 {
-                    if (nodeData.nodeType != null && typeof(Node).IsAssignableFrom(nodeData.nodeType))
+                    if (!string.IsNullOrEmpty(nodeData.nodeTypeName))
                     {
-                        var node = System.Activator.CreateInstance(nodeData.nodeType) as Node;
-                        node.startTime = nodeData.startTime;
-                        node.duration = nodeData.duration;
-                        nodes.Add(node);
+                        var nodeType = System.Type.GetType(nodeData.nodeTypeName);
+                        if (nodeType != null)
+                        {
+                            var node = System.Activator.CreateInstance(nodeType) as Node;
+                            if (node != null)
+                            {
+                                node.startTime = nodeData.startTime;
+                                node.duration = nodeData.duration;
+                                if (node is Node<T> typedNode)
+                                {
+                                    typedNode.Context = context;
+                                }
+                                container.Inject(node);
+                                nodes.Add(node);
+                            }
+                        }
                     }
                 }
                 
                 timeLine.Initialize(nodes);
-                timeLines[timeLineName] = timeLine;
+                timeLines[key] = timeLine;
                 return timeLine;
             }
             
             return null;
         }
         
-        public void UnloadTimeLine(string timeLineName)
+        public void UnloadTimeLine<T>(string timeLineName)
         {
-            if (timeLines.TryGetValue(timeLineName, out var timeLine))
+            string key = $"{timeLineName}_{typeof(T).FullName}";
+            if (timeLines.TryGetValue(key, out var timeLine))
             {
                 timeLine.Stop();
-                timeLines.Remove(timeLineName);
+                timeLines.Remove(key);
             }
         }
         
-        public TimeLine GetTimeLine(string timeLineName)
+        public void UnloadTimeLine(ITimeLine timeLine)
         {
-            timeLines.TryGetValue(timeLineName, out var timeLine);
-            return timeLine;
+            string keyToRemove = null;
+            foreach (var kv in timeLines)
+            {
+                if (kv.Value == timeLine)
+                {
+                    keyToRemove = kv.Key;
+                    break;
+                }
+            }
+            if (!string.IsNullOrEmpty(keyToRemove))
+            {
+                timeLine.Stop();
+                timeLines.Remove(keyToRemove);
+            }
+        }
+        
+        public TimeLine<T> GetTimeLine<T>(string timeLineName)
+        {
+            string key = $"{timeLineName}_{typeof(T).FullName}";
+            timeLines.TryGetValue(key, out var timeLine);
+            return timeLine as TimeLine<T>;
         }
         
         private void Update()
