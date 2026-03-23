@@ -28,19 +28,37 @@ public class SceneAMenu : MonoBehaviour
 
     public void TurnToMainMenu()
     {
+        bool flowControl = TurnToScene(0);
+        if (!flowControl)
+        {
+            return;
+        }
+    }
+
+    public void TurnToDecoct()
+    {
+        bool flowControl = TurnToScene(5);
+        if (!flowControl)
+        {
+            return;
+        }
+    }
+
+    public bool TurnToScene(int scene)
+    {
         if (SceneLoaderManager.Instance == null)
         {
             Debug.LogWarning("SceneLoaderManager instance not found, skipping scene transition");
-            return;
+            return false;
         }
 
         if (string.IsNullOrEmpty(transationStyle))
         {
             Debug.LogWarning("Transition style not set, skipping scene transition");
-            return;
+            return false;
         }
 
-        SceneLoaderManager.Instance.TransitionToScene(transationStyle, 0);
+        SceneLoaderManager.Instance.TransitionToScene(transationStyle, scene);
 
         if (ArchivingManager.Instance != null)
         {
@@ -50,6 +68,8 @@ public class SceneAMenu : MonoBehaviour
         {
             Debug.LogWarning("ArchivingManager instance not found, skipping save");
         }
+
+        return true;
     }
 
     public void TurnToMountain()

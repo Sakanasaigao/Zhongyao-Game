@@ -102,6 +102,7 @@ public class HorizontalCardHolder : MonoBehaviour
         {
             if (card.selected)
             {
+                Debug.Log($"selected card: {card}");
                 var moveCardTimeLine = timeLineManager.LoadTimeLine<Card>(moveCardTimeLineName, card);
                 moveCardTimeLine.Play();
             }

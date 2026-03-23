@@ -18,6 +18,7 @@ namespace Core.TIMELINE
                 Debug.LogError("potGroup is null! Check Zenject binding.");
                 //return;
             }
+            Debug.Log($"context: {Context}");
             Transform cardSlot = Context.transform.parent;
             cardSlot.SetParent(potGroup);
         }

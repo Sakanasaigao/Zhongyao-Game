@@ -12,10 +12,11 @@ namespace Core.TIMELINE
         
         public TimeLine<T> LoadTimeLine<T>(string timeLineName, T context = default)
         {
-            string key = $"{timeLineName}_{typeof(T).FullName}";
-            if (timeLines.ContainsKey(key))
+            string uniqueKey = GetKey(timeLineName, context);
+            
+            if (timeLines.ContainsKey(uniqueKey))
             {
-                return (TimeLine<T>)timeLines[key];
+                return (TimeLine<T>)timeLines[uniqueKey];
             }
             
             string path = $"{timeLineDataFolder}/{timeLineName}";
@@ -51,20 +52,20 @@ namespace Core.TIMELINE
                 }
                 
                 timeLine.Initialize(nodes);
-                timeLines[key] = timeLine;
+                timeLines[uniqueKey] = timeLine;
                 return timeLine;
             }
             
             return null;
         }
         
-        public void UnloadTimeLine<T>(string timeLineName)
+        public void UnloadTimeLine<T>(string timeLineName, T context = default)
         {
-            string key = $"{timeLineName}_{typeof(T).FullName}";
-            if (timeLines.TryGetValue(key, out var timeLine))
+            string uniqueKey = GetKey(timeLineName, context);
+            if (timeLines.TryGetValue(uniqueKey, out var timeLine))
             {
                 timeLine.Stop();
-                timeLines.Remove(key);
+                timeLines.Remove(uniqueKey);
             }
         }
         
@@ -86,11 +87,23 @@ namespace Core.TIMELINE
             }
         }
         
-        public TimeLine<T> GetTimeLine<T>(string timeLineName)
+        public TimeLine<T> GetTimeLine<T>(string timeLineName, T context = default)
         {
-            string key = $"{timeLineName}_{typeof(T).FullName}";
-            timeLines.TryGetValue(key, out var timeLine);
+            string uniqueKey = GetKey(timeLineName, context);
+            timeLines.TryGetValue(uniqueKey, out var timeLine);
             return timeLine as TimeLine<T>;
+        }
+        
+        public bool HasTimeLine<T>(string timeLineName, T context = default)
+        {
+            string uniqueKey = GetKey(timeLineName, context);
+            return timeLines.ContainsKey(uniqueKey);
+        }
+        
+        private string GetKey<T>(string timeLineName, T context)
+        {
+            string contextId = context != null ? context.GetHashCode().ToString() : "null";
+            return $"{timeLineName}_{typeof(T).FullName}_{contextId}";
         }
         
         private void Update()
