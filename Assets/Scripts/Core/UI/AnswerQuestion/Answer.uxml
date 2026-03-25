@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/Core/UI/AnswerQuestion/SelectionBtn.uss?fileID=7433441132597879392&amp;guid=31b943bd98547fc4ca596db3653ca2de&amp;type=3#SelectionBtn" />
+    <ui:VisualElement name="root" style="flex-grow: 1;">
+        <ui:VisualElement name="BG" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.12);">
+            <ui:VisualElement name="Card" style="width: 50%; height: 50%; top: 50%; bottom: 50%; left: 50%; translate: -50% -50%; background-image: resource(&apos;Art/Scroll/Scroll&apos;);">
+                <ui:Label tabindex="-1" text="用户请听题！" parse-escape-sequences="true" display-tooltip-when-elided="true" name="txt" style="top: 15%; left: 15%; width: 65%; -unity-font: url(&quot;project://database/Assets/Scripts/Core/IO/Fronts/fangzheng.TTF?fileID=12800000&amp;guid=a898d184fbc83604c94dd699306f0a00&amp;type=3#fangzheng&quot;); -unity-font-definition: initial; height: 30%;" />
+                <ui:Button text="选项A" parse-escape-sequences="true" display-tooltip-when-elided="true" name="A" class="selectionBtn" />
+                <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="B" class="selectionBtn" />
+                <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="C" class="selectionBtn" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

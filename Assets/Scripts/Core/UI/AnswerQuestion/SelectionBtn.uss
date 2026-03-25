@@ -1,0 +1,24 @@
+.selectionBtn {
+    align-self: center;
+    top: 15%;
+    width: 60%;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(89, 95, 71, 0.59);
+    border-right-color: rgba(89, 95, 71, 0.59);
+    border-top-color: rgba(89, 95, 71, 0.59);
+    border-bottom-color: rgba(89, 95, 71, 0.59);
+    transition-duration: 0.3s;
+}
+
+.selectionBtn:hover {
+    align-self: center;
+    top: 15%;
+    width: 63%;
+    margin-top: 10px;
+    background-color: rgba(89, 95, 71, 0.12);
+    border-left-color: rgba(89, 95, 71, 0.59);
+    border-right-color: rgba(89, 95, 71, 0.59);
+    border-top-color: rgba(89, 95, 71, 0.59);
+    border-bottom-color: rgba(89, 95, 71, 0.59);
+}
