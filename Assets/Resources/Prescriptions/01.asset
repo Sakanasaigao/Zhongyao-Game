@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06812405b8ebacd4fa03986e8dd5b051, type: 3}
+  m_Name: 01
+  m_EditorClassIdentifier: 
+  prescriptionName: "\u6842\u679D\u6C64"
+  requiredHerbs:
+  - "\u6842\u679D"
+  - "\u767D\u828D"
+  - "\u7518\u8349"
+  - "\u751F\u59DC"
+  - "\u5927\u67A3"
+  distractorCount: 0
+  brewingTime: 30
+  timeReductionPerCorrect: 15
