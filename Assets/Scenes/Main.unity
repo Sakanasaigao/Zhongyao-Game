@@ -393,6 +393,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &276643215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5119069070630442690, guid: 6482cc3cea9a013459921d67f8925725, type: 3}
+  m_PrefabInstance: {fileID: 1320099042749664853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &399676351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1461,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4117177042576618553, guid: 6482cc3cea9a013459921d67f8925725, type: 3}
+      propertyPath: charactersContainer
+      value: 
+      objectReference: {fileID: 276643215}
     m_RemovedComponents:
     - {fileID: 2024461892857217474, guid: 6482cc3cea9a013459921d67f8925725, type: 3}
     m_RemovedGameObjects: []

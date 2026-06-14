@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeUss: {fileID: -4733365628477956816, guid: 7919de5bb3a5a474aaa477bb93ad2e99, type: 3}
   m_TargetTexture: {fileID: 0}
-  m_ScaleMode: 1
+  m_ScaleMode: 2
   m_ReferenceSpritePixelsPerUnit: 100
   m_Scale: 1
-  m_ReferenceDpi: 96
+  m_ReferenceDpi: 92.4
   m_FallbackDpi: 96
-  m_ReferenceResolution: {x: 1200, y: 800}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_Match: 0
+  m_Match: 0.5
   m_SortingOrder: 0
   m_TargetDisplay: 0
-  m_ClearDepthStencil: 1
+  m_ClearDepthStencil: 0
   m_ClearColor: 0
-  m_ColorClearValue: {r: 0, g: 0, b: 0, a: 0}
+  m_ColorClearValue: {r: 1, g: 0.24842751, b: 0.24842751, a: 0.5568628}
   m_DynamicAtlasSettings:
     m_MinAtlasSize: 64
     m_MaxAtlasSize: 4096

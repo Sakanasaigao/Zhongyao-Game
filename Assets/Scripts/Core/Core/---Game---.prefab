@@ -570,7 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 3778521226637209944}
   dialogueLoader: {fileID: 2449730872197611558}
-  charactersContainer: {fileID: 0}
+  charactersContainer: {fileID: 5119069070630442690}
 --- !u!1 &1376400721727164811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,7 +1396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: efbc07ce635609542ab14f66e8c5a3e3, type: 2}
   _itemPanel: {fileID: 8302900155270210646}
-  warehouse: {fileID: 2215410031815099917}
 --- !u!1 &3563209972972969188
 GameObject:
   m_ObjectHideFlags: 0

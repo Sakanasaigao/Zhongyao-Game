@@ -1,24 +1,26 @@
 .selectionBtn {
     align-self: center;
-    top: 15%;
     width: 60%;
-    margin-top: 10px;
+    height: 40px;
+    margin-top: 15px;
     background-color: rgba(0, 0, 0, 0);
     border-left-color: rgba(89, 95, 71, 0.59);
     border-right-color: rgba(89, 95, 71, 0.59);
     border-top-color: rgba(89, 95, 71, 0.59);
     border-bottom-color: rgba(89, 95, 71, 0.59);
+    border-width: 2px;
+    color: rgb(50, 50, 50);
+    font-size: 16px;
     transition-duration: 0.3s;
+    -unity-font: url("project://database/Assets/Scripts/Core/IO/Fronts/fangzheng.TTF?fileID=12800000&guid=a898d184fbc83604c94dd699306f0a00&type=3#fangzheng");
+    -unity-font-definition: initial;
 }
 
 .selectionBtn:hover {
-    align-self: center;
-    top: 15%;
     width: 63%;
-    margin-top: 10px;
     background-color: rgba(89, 95, 71, 0.12);
-    border-left-color: rgba(89, 95, 71, 0.59);
-    border-right-color: rgba(89, 95, 71, 0.59);
-    border-top-color: rgba(89, 95, 71, 0.59);
-    border-bottom-color: rgba(89, 95, 71, 0.59);
+    border-left-color: rgba(89, 95, 71, 0.79);
+    border-right-color: rgba(89, 95, 71, 0.79);
+    border-top-color: rgba(89, 95, 71, 0.79);
+    border-bottom-color: rgba(89, 95, 71, 0.79);
 }
