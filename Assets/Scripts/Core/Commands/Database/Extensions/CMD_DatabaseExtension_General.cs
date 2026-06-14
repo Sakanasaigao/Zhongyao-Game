@@ -46,27 +46,30 @@ namespace COMMANDS
 
         private static void OpenDialogueLoader(string[] data)
         {
+            if (DialogueLoaderManager.instance == null)
+                return;
+
             float speed = 1f;
-
             var parameters = ConvertDataToParameters(data);
-
             parameters.TryGetValue(PARAM_SPEED, out speed, defaultValue: 1f);
-
             DialogueLoaderManager.instance.Open(speed);
         }
-        
+
         private static void CloseDialogueLoader(string[] data)
         {
+            if (DialogueLoaderManager.instance == null)
+                return;
+
             float speed = 1f;
-
             var parameters = ConvertDataToParameters(data);
-
             parameters.TryGetValue(PARAM_SPEED, out speed, defaultValue: 1f);
-
             DialogueLoaderManager.instance.Close(speed);
         }
         private static void ResetLoader(string[] data)
         {
+            if (DialogueLoaderManager.instance == null)
+                return;
+
             DialogueLoaderManager.instance.ResetDialogueLoader();
         }
     }

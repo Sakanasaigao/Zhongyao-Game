@@ -20,11 +20,34 @@ namespace CHARACTERS
         public string characterPrefabPathFormat => $"{characterRootPathFormat}/{characterPrefabNameFormat}";
 
         [SerializeField] private RectTransform _characterPanel = null;
-        public RectTransform characterPanel => _characterPanel;
+        public RectTransform characterPanel
+        {
+            get
+            {
+                if (_characterPanel == null)
+                {
+                    var panel = GameObject.Find("CharacterPanel")?.GetComponent<RectTransform>();
+                    if (panel != null)
+                        _characterPanel = panel;
+                }
+                return _characterPanel;
+            }
+        }
 
         private void Awake()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        public void ClearCharacters()
+        {
+            characters.Clear();
         }
 
         public ItemConfigData GetCharacterConfig(string characterName)

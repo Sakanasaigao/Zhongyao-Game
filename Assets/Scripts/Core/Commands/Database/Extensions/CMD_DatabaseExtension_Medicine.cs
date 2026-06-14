@@ -27,64 +27,8 @@ namespace MEDICINE
 
         private static void CreateMedicinePot(string[] data)
         {
-            CommandParameters parameters = new CommandParameters(data);
-
-            if (!parameters.TryGetValue(PARAM_TARGETS, out string targetsStr, ""))
-            {
-                Debug.LogError("CreateMedicinePot ��Ҫ -targets ����");
-                return;
-            }
-
-            string[] targetMeds = ParseStringArray(targetsStr);
-
-            if (!parameters.TryGetValue(PARAM_COUNT, out int totalCount, 0))
-            {
-                Debug.LogError("CreateMedicinePot ��Ҫ -count ����");
-                return;
-            }
-
-            Vector3 position = new Vector3(-1, 0, -4);
-            if (parameters.TryGetValue(PARAM_POSITION, out string posStr, ""))
-            {
-                Debug.Log("Got Positon");
-                string[] posParts = posStr.Split(',');
-                if (posParts.Length == 3)
-                {
-                    float x, y, z;
-                    if (float.TryParse(posParts[0], out x) &&
-                        float.TryParse(posParts[1], out y) &&
-                        float.TryParse(posParts[2], out z))
-                    {
-                        position = new Vector3(x, y, z);
-                    }
-                }
-            }
-
-            if (!parameters.TryGetValue(PARAM_FILE, out string file))
-            {
-                Debug.Log("����ҩ����Ҫ���ûص��ű� -f");
-                return;
-            }
-
-            // 只使用目标药品，不添加随机药品
-            string[] levelSpecificMedicines = targetMeds;
-            Debug.Log(levelSpecificMedicines.Length);
-
-            // 简化逻辑，直接使用目标药品数组，不需要打乱
-            string[] allMedicineToPut = targetMeds;
-
-            if (MedicinePotManager.Instance != null)
-            {
-                Debug.Log("Creating MedicinePot");
-                Debug.Log(allMedicineToPut.Length);
-                // 传递正确的目标药品名称数组
-                MedicinePotManager.Instance.CreateMedicinePot(targetMeds, allMedicineToPut, position, file);
-                SceneAMenu.Instance.CloseMountain();
-            }
-            else
-            {
-                Debug.LogError("MedicinePotManager ʵ��δ����");
-            }
+            // 旧药罐系统已弃用，改用Decoct场景的煎药小游戏
+            Debug.Log("旧药罐系统已弃用，CreateMedicinePot 命令跳过");
         }
 
         private static (string[] IndicesFormatted, string[] ShuffledArray) MergeAndShuffle(string[] a, string[] b)
@@ -117,7 +61,7 @@ namespace MEDICINE
 
             if (!parameters.TryGetValue(PARAM_ITEMS, out string itemsStr, ""))
             {
-                Debug.LogError("AddMedicineToWarehouse ������Ҫ -items ����");
+                Debug.LogError("AddMedicineToWarehouse 需要 -items 参数");
                 return;
             }
 
@@ -125,7 +69,7 @@ namespace MEDICINE
 
             if (ItemWarehouse.Instance == null)
             {
-                Debug.LogError("ItemWarehouse ʵ��δ�ҵ�");
+                Debug.LogError("ItemWarehouse 实例未找到");
                 return;
             }
 
@@ -136,7 +80,7 @@ namespace MEDICINE
                 {
                     bool success = ItemWarehouse.Instance.AddItem(trimmedItem);
                     if (!success)
-                        Debug.LogWarning($"ҩƷ '{trimmedItem}' �Ѵ��ڣ�����ʧ��");
+                        Debug.LogWarning($"药品 '{trimmedItem}' 已存在，添加失败");
                 }
             }
         }
@@ -147,7 +91,7 @@ namespace MEDICINE
 
             if (!parameters.TryGetValue(PARAM_COUNT, out int count, 0))
             {
-                Debug.LogError("PutMedicineOnCounter ������Ҫ -count ����");
+                Debug.LogError("PutMedicineOnCounter 需要 -count 参数");
                 return;
             }
 
@@ -165,7 +109,7 @@ namespace MEDICINE
             if (CounterManager.instance != null)
                 CounterManager.instance.PlaceAllMedicine(count, necessaryMeds);
             else
-                Debug.LogError("CounterManager ʵ��δ�ҵ�");
+                Debug.LogError("CounterManager 实例未找到");
         }
     }
 }

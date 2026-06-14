@@ -95,6 +95,9 @@ namespace DIALOGUE
 
         private void HandleSpeakerLogic(DL_SPEAKER_DATA speakerData)
         {
+            if (CharacterManager.instance == null)
+                return;
+
             Character character = CharacterManager.instance.GetCharacter(speakerData.name, createIfDoesNotExist: false);
             if (character == null)
                 CharacterManager.instance.CreateCharacter(speakerData.name, revealAfterCreation: false);

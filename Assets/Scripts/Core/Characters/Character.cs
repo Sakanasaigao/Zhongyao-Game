@@ -85,6 +85,9 @@ namespace CHARACTERS
 
         public virtual Coroutine Show(float speedMultiplier = 1f)
         {
+            if (root == null || characterManager == null)
+                return null;
+
             if (isRevealing)
                 return co_revealing;
 
@@ -97,6 +100,9 @@ namespace CHARACTERS
 
         public virtual Coroutine Hide(float speedMultiplier)
         {
+            if (root == null || characterManager == null)
+                return null;
+
             if (isHiding)
                 return co_hiding;
 
@@ -120,7 +126,7 @@ namespace CHARACTERS
 
         public virtual void SetPosition(Vector2 position)
         {
-            if (position == null)
+            if (root == null)
                 return;
 
             (Vector2 minAnchorTarget, Vector2 maxAnchorTarget) = ConvertUITargetPositionToRelativeCharacterAnchorTargets(position);
@@ -167,6 +173,9 @@ namespace CHARACTERS
 
         protected (Vector2, Vector2) ConvertUITargetPositionToRelativeCharacterAnchorTargets(Vector2 position)
         {
+            if (root == null)
+                return (position, position);
+
             Vector2 padding = root.anchorMax - root.anchorMin;
             float maxX = 1f - padding.x;
             float maxY = 1f - padding.y;
@@ -251,6 +260,9 @@ namespace CHARACTERS
 
         public Coroutine FaceRight(float speed = 1, bool immediate = false)
         {
+            if (characterManager == null)
+                return null;
+
             if (isFlipping)
                 characterManager.StopCoroutine(co_flipping);
 

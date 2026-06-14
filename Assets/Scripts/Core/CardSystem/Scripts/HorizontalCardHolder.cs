@@ -64,8 +64,13 @@ public class HorizontalCardHolder : MonoBehaviour
     private void LoadItemCards()
     {
         List<string> items = ItemWarehouse.Instance.GetAllItems();
+        LoadSpecificItems(items);
+    }
+
+    public void LoadSpecificItems(List<string> itemNames)
+    {
         ClearCards();
-        foreach (string itemName in items)
+        foreach (string itemName in itemNames)
         {
             var itemCard = Instantiate(slotPrefab, transform).GetComponentInChildren<Card>();
             if (itemCard == null)
@@ -75,6 +80,32 @@ public class HorizontalCardHolder : MonoBehaviour
             }
 
             itemCard.Initialize(itemName);
+        }
+
+        rect = GetComponent<RectTransform>();
+        cards = GetComponentsInChildren<Card>().ToList();
+
+        int cardCount = 0;
+        foreach (Card card in cards)
+        {
+            card.PointerEnterEvent.AddListener(CardPointerEnter);
+            card.PointerExitEvent.AddListener(CardPointerExit);
+            card.BeginDragEvent.AddListener(BeginDrag);
+            card.EndDragEvent.AddListener(EndDrag);
+            card.name = cardCount.ToString();
+            cardCount++;
+        }
+
+        StartCoroutine(Frame());
+
+        IEnumerator Frame()
+        {
+            yield return new WaitForSecondsRealtime(.1f);
+            for (int i = 0; i < cards.Count; i++)
+            {
+                if (cards[i].cardVisual != null)
+                    cards[i].cardVisual.UpdateIndex(transform.childCount);
+            }
         }
     }
 

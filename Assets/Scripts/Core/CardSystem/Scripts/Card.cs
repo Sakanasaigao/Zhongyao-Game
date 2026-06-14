@@ -11,6 +11,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     private Canvas canvas;
     private Image imageComponent;
     [SerializeField] private string itemName = "ÈË²Î";
+    public string ItemName => itemName;
     [SerializeField] private bool instantiateVisual = true;
     private VisualCardsHandler visualHandler;
     private Vector3 offset;
